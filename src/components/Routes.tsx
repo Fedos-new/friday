@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import {Redirect, Route, Switch } from 'react-router-dom';
 import { LoginContainer } from "./login/LoginContainer";
 import {ProfileContainer} from "./profile/ProfileContainer";
 import {Test} from "./test/Test";
@@ -23,6 +23,7 @@ export const Routes = () => {
     return (
         <div>
             <Switch>
+                <Route path={"/"} exact render={() => <Redirect to={PATH.LOGIN}/>}/>
                 <Route path={PATH.LOGIN} render={() => <LoginContainer/>}/>
                 <Route path={PATH.REGISTRATION} render={() => <RegistrationContainer/>}/>
                 <Route path={PATH.PROFILE} render={() => <ProfileContainer/>}/>
@@ -30,6 +31,7 @@ export const Routes = () => {
                 <Route path={PATH.RECOVERY_PASSWORD} render={() => <PasswordRecoveryContainer/>}/>
                 <Route path={PATH.NEW_PASSWORD} render={() => <NewPasswordContainer/>}/>
                 <Route path={PATH.TEST} render={() => <Test/>}/>
+                <Route render={() => <Error404/>}/>
             </Switch>
         </div>
     )

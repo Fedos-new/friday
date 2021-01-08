@@ -25,9 +25,7 @@ export const Header: React.FC = () => {
             <div>
                 <NavLink to={PATH.TEST}>Test</NavLink>
             </div>
-            <div>
-                <NavLink to={PATH.ERROR_404}>Error404</NavLink>
-            </div>
+
         </div>
     )
 }
