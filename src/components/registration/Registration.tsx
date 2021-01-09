@@ -1,9 +1,15 @@
-import React from 'react';
+import React from 'react'
+import s from '/Registration.module.css'
 
-export const Registration = () => {
+type PropsType = {
+  
+}
+
+export const Registration = (props:PropsType) => {
   return (
-    <div>
-      Registration
+    <div className={s.wrapper}>
+      Registration area
     </div>
   );
 }
+
