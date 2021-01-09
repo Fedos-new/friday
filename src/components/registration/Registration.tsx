@@ -55,7 +55,6 @@ export const Registration = (props:PropsType) => {
             <div className={s.formItem}>
               <label htmlFor="nameInputLabel" className={s.label} >Введите пароль</label>
               <input type="password" name="password" id="nameInputLabel" className={pass} onChange={formik.handleChange} />
-              {passLabel? '' : <label htmlFor="nameInputLabel" className={s.labelRed} >Пароли не совпадают!</label>}
             </div>
             <div className={s.formItem}>
               <label htmlFor="nameInputLabel" className={s.label} >Подтвердите пароль</label>
