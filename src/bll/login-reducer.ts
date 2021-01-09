@@ -3,10 +3,15 @@
 const SET_USER_DATA = 'SET_USER_DATA';
 
 type InitialStateType = {
+    email: string
+    password: string
+    rememberMe: boolean
 }
 
 const initialState: InitialStateType = {
-
+    email: "nya-admin@nya.nya",
+    password: "1qazxcvBG",
+    rememberMe: false // - куки умрут если пользователь будет
 }
 
 export const loginReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
