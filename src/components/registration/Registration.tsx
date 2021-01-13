@@ -6,26 +6,24 @@ import {AppRootState} from '../../bll/store'
 import {addUserAC} from '../../bll/registration-reducer'
 
 type PropsType = {
-
+  name: string
+  password: string
+  checkPassword: string|number
 }
 
 export const Registration = (props:PropsType) => {
 
   const dispatch = useDispatch()
 
-  const name = useSelector((state:AppRootState) => state.registration.name)
-  const password = useSelector((state:AppRootState) => state.registration.password)
-  const checkPassword = useSelector((state:AppRootState) => state.registration.checkPassword)
-
-  console.log(name)
-  console.log(password)
-  console.log(checkPassword)
+  console.log(props.name)
+  console.log(props.password)
+  console.log(props.checkPassword)
 
   const formik = useFormik({
     initialValues: {
-      name: name,
-      password: password,
-      checkPassword: checkPassword
+      name: props.name,
+      password: props.password,
+      checkPassword: props.checkPassword
     },
     onSubmit: values => {
       if(values.password === values.checkPassword){
