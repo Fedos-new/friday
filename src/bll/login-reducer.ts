@@ -1,6 +1,6 @@
 import {Dispatch} from 'redux'
 import {authAPI, LoginParamsType} from "../dal/api";
-import {setAppStatusAC, SetAppStatusActionType} from "./app-reducer";
+import {setAppErrorAC, SetAppErrorActionType, setAppStatusAC, SetAppStatusActionType} from "./app-reducer";
 
 const SET_IS_LOGGED_IN = 'SET_IS_LOGGED_IN';
 
@@ -30,15 +30,14 @@ export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<ActionsTyp
     authAPI.login(data)
         .then(res => {
             dispatch(setIsLoggedInAC(true))
-            // console.log(res)
+            console.log(res)
             dispatch(setAppStatusAC('succeeded'))
         })
         .catch(rej => {
-            alert(rej.response.data.error)
-            // console.log(rej.response.data.error)
+            console.log(rej.response)
+            dispatch(setAppErrorAC(rej.response.data.error))
             dispatch(setAppStatusAC('succeeded'))
         })
-
 }
 
 
@@ -47,3 +46,4 @@ type InitialStateType = {
 }
 type ActionsType = ReturnType<typeof setIsLoggedInAC>
     | SetAppStatusActionType
+    | SetAppErrorActionType
