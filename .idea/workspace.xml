@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8800e5b4-22fd-46dd-8a95-c8df30a3f521" name="Default Changelist" comment="" />
+    <list default="true" id="8800e5b4-22fd-46dd-8a95-c8df30a3f521" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/common/Loader/Loader.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/Loader/Loader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/newPassword/NewPassword.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/newPassword/NewPasswordAPI.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/passwordRecovery/PasswordRecovery.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/passwordRecovery/PasswordRecoveryAPI.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bll/recoveryPassword-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/recoveryPassword-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/newPassword/NewPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newPassword/NewPassword.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/passwordRecovery/PasswordRecovery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/passwordRecovery/PasswordRecovery.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/passwordRecovery/PasswordRecoveryContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/passwordRecovery/PasswordRecoveryContainer.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,9 +33,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/common" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/common" />
+      <recent name="$PROJECT_DIR$/src/components/passwordRecovery" />
+      <recent name="$PROJECT_DIR$/src/components/newPassword" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -36,6 +57,11 @@
       <workItem from="1610726228985" duration="308000" />
       <workItem from="1610726587264" duration="23000" />
       <workItem from="1610726682739" duration="17000" />
+      <workItem from="1610726748802" duration="1484000" />
+      <workItem from="1610748744363" duration="184000" />
+      <workItem from="1610754930219" duration="1551000" />
+      <workItem from="1610797407359" duration="261000" />
+      <workItem from="1610799641152" duration="10383000" />
     </task>
     <servers />
   </component>
