@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8800e5b4-22fd-46dd-8a95-c8df30a3f521" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/common/Loader/Loader.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/Loader/Loader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/newPassword/NewPassword.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/newPassword/NewPasswordAPI.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/passwordRecovery/PasswordRecovery.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/passwordRecovery/PasswordRecoveryAPI.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bll/recoveryPassword-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/recoveryPassword-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bll/newPassword-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/newPassword-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/newPassword/NewPassword.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newPassword/NewPassword.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/newPassword/NewPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newPassword/NewPassword.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/passwordRecovery/PasswordRecovery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/passwordRecovery/PasswordRecovery.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/passwordRecovery/PasswordRecoveryContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/passwordRecovery/PasswordRecoveryContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/newPassword/NewPasswordAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newPassword/NewPasswordAPI.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/newPassword/NewPasswordContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newPassword/NewPasswordContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/passwordRecovery/PasswordRecovery.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/passwordRecovery/PasswordRecovery.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/passwordRecovery/PasswordRecoveryAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/passwordRecovery/PasswordRecoveryAPI.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +58,7 @@
       <workItem from="1610748744363" duration="184000" />
       <workItem from="1610754930219" duration="1551000" />
       <workItem from="1610797407359" duration="261000" />
-      <workItem from="1610799641152" duration="10383000" />
+      <workItem from="1610799641152" duration="14187000" />
     </task>
     <servers />
   </component>
