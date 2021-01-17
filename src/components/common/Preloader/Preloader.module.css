@@ -1,0 +1,8 @@
+.preload {
+    position: fixed;
+    top: 40%;
+    right: 46%;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+}

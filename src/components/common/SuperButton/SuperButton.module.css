@@ -31,3 +31,9 @@
     color: #4c84e0;
     background-color: transparent;
 }
+
+
+.default:disabled {
+    color: #dce4ec;
+    background-color: transparent;
+}

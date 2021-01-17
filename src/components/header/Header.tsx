@@ -7,25 +7,24 @@ import style from "../header/Header.module.css"
 export const Header: React.FC = () => {
     return (
         <div className={style.wrap}>
-            <div >
-                <NavLink to={PATH.REGISTRATION}>Registration</NavLink>
+            <div>
+                <NavLink className={style.link} to={PATH.REGISTRATION}>Registration</NavLink>
             </div>
             <div>
-                <NavLink to={PATH.LOGIN}>Login</NavLink>
+                <NavLink className={style.link} to={PATH.LOGIN}>Login</NavLink>
             </div>
             <div>
-                <NavLink to={PATH.PROFILE}>Profile</NavLink>
+                <NavLink className={style.link} to={PATH.PROFILE}>Profile</NavLink>
             </div>
             <div>
-                <NavLink to={PATH.RECOVERY_PASSWORD}>Recovery Password</NavLink>
+                <NavLink className={style.link} to={PATH.RECOVERY_PASSWORD}>Recovery Password</NavLink>
             </div>
             <div>
-                <NavLink to={PATH.NEW_PASSWORD}>NewPassword</NavLink>
+                <NavLink className={style.link} to={PATH.NEW_PASSWORD}>NewPassword</NavLink>
             </div>
             <div>
-                <NavLink to={PATH.TEST}>Test</NavLink>
+                <NavLink className={style.link} to={PATH.TEST}>Test</NavLink>
             </div>
-
         </div>
     )
 }
