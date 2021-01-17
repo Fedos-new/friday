@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import SuperInputText from '../common/SuperInputText/SuperInputText';
 import SuperButton from '../common/SuperButton/SuperButton';
 import s from './PasswordRecovery.module.css';
@@ -30,6 +30,14 @@ export const PasswordRecovery = (props: PasswordRecoveryType) => {
 		setEmail('')
 	}
 
+	const onEnter = () => {
+		if (!props.error) {
+			onClickButtonHandler()
+		}
+	}
+
+	const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && onEnter();
+
 	if (props.status === 'loading') {
 		return <Loader/>
 	}
@@ -45,7 +53,7 @@ export const PasswordRecovery = (props: PasswordRecoveryType) => {
 					:
 					<>
 						<h1>Recover Password</h1>
-						<SuperInputText placeholder='Email' value={email} onChange={onChangeInputHandler} error={props.error}/>
+						<SuperInputText placeholder='Email' value={email} onKeyPress={onKeyPressHandler} onChange={onChangeInputHandler} type='text' error={props.error}/>
 						<SuperButton onClick={onClickButtonHandler} disabled={disabled}
 												 className={s.recoveryBtn}> Send </SuperButton>
 					</>

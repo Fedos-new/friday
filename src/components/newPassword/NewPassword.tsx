@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
+import React, {ChangeEvent, KeyboardEvent, useEffect, useState} from 'react';
 import s from './NewPassword.module.css'
 import SuperInputText from '../common/SuperInputText/SuperInputText';
 import SuperButton from '../common/SuperButton/SuperButton';
@@ -25,6 +25,8 @@ export const NewPassword = (props: NewPasswordType) => {
 	const dispatch = useDispatch();
 	const {token} = useParams<ParamTypes>()
 
+	console.log(token)
+
 	const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
 		setDisabled(false)
 		event.currentTarget.value && setPassword(event.currentTarget.value)
@@ -37,20 +39,29 @@ export const NewPassword = (props: NewPasswordType) => {
 		setPassword('')
 	}
 
+
+	const onEnter = () => {
+		if (!props.error) {
+			onClickButtonHandler()
+		}
+	}
+
+	const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && onEnter();
+
+
 	if (props.status === 'loading') {
 		return <Loader/>
 	}
 
 	if (props.success) {
-		return <Redirect to={PATH.LOGIN} />
+		return <Redirect to={PATH.LOGIN}/>
 	}
 
 	return (
 		<div className={s.box}>
 			<h1>New password</h1>
-			<SuperInputText placeholder='New password' value={password} onChange={onChangeInputHandler} type={'password'}
-											error={props.error}/>
-			{/*<SuperInputText placeholder='Confirm password' />*/}
+			<SuperInputText placeholder='New password' value={password} onChange={onChangeInputHandler} type='password'
+											error={props.error} onKeyPress={onKeyPressHandler}/>
 			<SuperButton disabled={disabled} onClick={onClickButtonHandler} className={s.newPassBtn}>Save</SuperButton>
 		</div>
 	);
