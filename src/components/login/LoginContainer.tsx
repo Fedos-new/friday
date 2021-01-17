@@ -3,6 +3,8 @@ import {Login} from "./Login";
 import {useSelector} from "react-redux";
 import {AppRootState} from "../../bll/store";
 import {RequestErrorType, RequestStatusType} from "../../bll/app-reducer";
+import {Redirect} from "react-router-dom";
+import {PATH} from "../Routes";
 
 
 export const LoginContainer = () => {
@@ -11,10 +13,14 @@ export const LoginContainer = () => {
     const status = useSelector<AppRootState, RequestStatusType>(state => state.app.status)
     const serverError = useSelector<AppRootState, RequestErrorType>(state => state.app.error)
 
+
+    if (isLoggedIn) {
+        return <Redirect to={PATH.PROFILE}/>
+    }
+
     return (
         <div>
             <Login
-                isLoggedIn={isLoggedIn}
                 status={status}
                 serverError={serverError}
             />

@@ -49,7 +49,6 @@ export const LoginWithoutFormik = () => {
         }
     }
 
-
     if (isLoggedIn) {
         return <Redirect to={PATH.PROFILE}/>
     }

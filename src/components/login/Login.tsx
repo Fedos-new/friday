@@ -3,7 +3,7 @@ import style from './Login.module.css'
 import SuperInputText from "../common/SuperInputText/SuperInputText";
 import SuperButton from "../common/SuperButton/SuperButton";
 import SuperCheckbox from "../common/SuperCheckbox/SuperCheckbox";
-import {NavLink, Redirect} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {PATH} from "../Routes";
 import {useDispatch} from "react-redux";
 import {loginTC} from "../../bll/login-reducer";
@@ -13,18 +13,15 @@ import {RequestErrorType, RequestStatusType} from "../../bll/app-reducer";
 
 
 type LoginType = {
-    isLoggedIn: boolean
     status: RequestStatusType
     serverError: RequestErrorType
 }
 
 export const Login = (props: LoginType) => {
 
-    const {isLoggedIn, status, serverError} = props
-
-    const dispatch = useDispatch()
+    const { status, serverError} = props
     const [disable, setDisable] = useState<boolean>(false)
-
+    const dispatch = useDispatch()
 
     type  FormikErrorType = {
         email?: string
@@ -56,10 +53,6 @@ export const Login = (props: LoginType) => {
         },
     });
 
-
-    if (isLoggedIn) {
-        return <Redirect to={PATH.PROFILE}/>
-    }
 
     return (
         <div className={style.wrap}>
