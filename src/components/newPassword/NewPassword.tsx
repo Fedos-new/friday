@@ -26,7 +26,6 @@ export const NewPassword = (props: NewPasswordType) => {
 	const [matchError, setMatchError] = useState<boolean>(false)
 	const dispatch = useDispatch();
 	const {token} = useParams<ParamTypes>()
-	console.log(token)
 
 	const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
 		setDisabled(false)
@@ -59,7 +58,6 @@ export const NewPassword = (props: NewPasswordType) => {
 
 	const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && onEnter();
 
-
 	if (props.status === 'loading') {
 		return <Loader/>
 	}
@@ -73,7 +71,6 @@ export const NewPassword = (props: NewPasswordType) => {
 			<h1>New password</h1>
 			<SuperInputText placeholder='New password' value={password} onChange={onChangeInputHandler}
 											error={props.error} onKeyPress={onKeyPressHandler} type='password'/>
-
 			{
 				props.error &&
         <>
