@@ -6,8 +6,9 @@ const instance = axios.create({
 	withCredentials: true
 })
 
+
 export const newPasswordAPI = {
-	sendNewPassword(newPassword: string, token: string) {
+	sendNewPassword(newPassword: string, token: string | undefined) {
 		return instance.post('auth/set-new-password',
 			{
 				password: newPassword,

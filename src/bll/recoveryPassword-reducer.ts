@@ -68,12 +68,12 @@ export const sendEmailTC = (email: string) => (dispatch: Dispatch) => {
   dispatch(setAppStatusAC('loading'))
 	passwordRecoveryAPI.sendEmail(email)
 		.then(res => {
-		  if (res.status === 200) {
-        dispatch(setSuccessAC(res.data.info))
+			console.log(res)
+			debugger
+			if (res.status === 200) {
+        // dispatch(setSuccessAC(res.data.info))
         dispatch(setAppStatusAC('succeeded'))
       }
-			console.log(res.status === 200)
-			console.log(res.data.info)
 		})
 		.catch(err => {
 			const error = err.response

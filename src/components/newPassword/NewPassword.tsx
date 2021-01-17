@@ -1,4 +1,4 @@
-import React, {ChangeEvent, KeyboardEvent, useEffect, useState} from 'react';
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import s from './NewPassword.module.css'
 import SuperInputText from '../common/SuperInputText/SuperInputText';
 import SuperButton from '../common/SuperButton/SuperButton';
@@ -24,7 +24,6 @@ export const NewPassword = (props: NewPasswordType) => {
 	const [disabled, setDisabled] = useState<boolean>(true)
 	const dispatch = useDispatch();
 	const {token} = useParams<ParamTypes>()
-
 	console.log(token)
 
 	const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {

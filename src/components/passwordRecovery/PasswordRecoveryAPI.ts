@@ -6,6 +6,7 @@ const instance = axios.create({
 	withCredentials: true
 })
 
+
 export const passwordRecoveryAPI = {
 	sendEmail(email: string) {
 		return instance.post('auth/forgot',
