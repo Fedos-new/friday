@@ -1,0 +1,15 @@
+.formLogin {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 304px;
+    margin: 0 auto;
+}
+.link {
+    margin-top: 5px;
+    text-decoration: none;
+}
+.error {
+    color: #d03566;
+    padding: 10px 0;
+}

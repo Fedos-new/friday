@@ -9,7 +9,7 @@ type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElem
 type SuperInputTextPropsType = DefaultInputPropsType & { // и + ещё пропсы которых нет в стандартном инпуте
     onChangeText?: (value: string) => void
     onEnter?: () => void
-    error?: string
+    error?: string | null | boolean
     spanClassName?: string
     setError?: (error: string) => void
 
@@ -59,7 +59,7 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = (
                 {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
             />
 
-            {error && <span className={finalSpanClassName}>{error}</span>}
+            {/*{error && <span className={finalSpanClassName}>{error}</span>}*/}
         </>
     );
 }
