@@ -1,5 +1,5 @@
 import {Dispatch} from 'redux';
-import {newPasswordAPI} from '../components/newPassword/NewPasswordAPI';
+import {newPasswordAPI} from '../dal/NewPasswordAPI';
 
 const SET_ERROR = 'SET_ERROR'
 const SET_SUCCESS = 'SET_SUCCESS'

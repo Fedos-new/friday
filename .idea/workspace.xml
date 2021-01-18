@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="8800e5b4-22fd-46dd-8a95-c8df30a3f521" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/newPassword/NewPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/newPassword/NewPassword.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bll/newPassword-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/newPassword-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bll/recoveryPassword-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/recoveryPassword-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/newPassword/NewPasswordAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/dal/NewPasswordAPI.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/passwordRecovery/PasswordRecoveryAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/dal/PasswordRecoveryAPI.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +28,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1n70pIQ4P8LwfqJA9UzM0A4wSr7" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -30,13 +45,36 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\itreact\friday\src\dal" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components/common" />
       <recent name="$PROJECT_DIR$/src/components/passwordRecovery" />
       <recent name="$PROJECT_DIR$/src/components/newPassword" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="8800e5b4-22fd-46dd-8a95-c8df30a3f521" name="Default Changelist" comment="" />
@@ -60,5 +98,39 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1899" height="203" key="GridCell.Tab.0.bottom" timestamp="1610964123832">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="203" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1610964123832" />
+    <state width="1899" height="203" key="GridCell.Tab.0.center" timestamp="1610964123831">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="203" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1610964123831" />
+    <state width="1899" height="203" key="GridCell.Tab.0.left" timestamp="1610964123831">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="203" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1610964123831" />
+    <state width="1899" height="203" key="GridCell.Tab.0.right" timestamp="1610964123832">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="203" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1610964123832" />
+    <state x="761" y="328" key="git4idea.merge.GitMergeDialog" timestamp="1610963949301">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="761" y="328" key="git4idea.merge.GitMergeDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1610963949301" />
   </component>
 </project>

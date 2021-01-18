@@ -1,5 +1,5 @@
 import {Dispatch} from 'redux';
-import {passwordRecoveryAPI} from '../components/passwordRecovery/PasswordRecoveryAPI';
+import {passwordRecoveryAPI} from '../dal/PasswordRecoveryAPI';
 
 const SET_ERROR = 'SET_ERROR'
 const SET_SUCCESS = 'SET_SUCCESS'
