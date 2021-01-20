@@ -6,6 +6,7 @@ import { profileReducer } from "./profile-reducer";
 import { recoveryPasswordReducer} from "./recoveryPassword-reducer";
 import {registrationReducer} from "./registration-reducer";
 import {appReducer} from "./app-reducer";
+import {searchReducer} from './search-reducer';
 
 
 const rootReducer = combineReducers({
@@ -14,8 +15,8 @@ const rootReducer = combineReducers({
     recoveryPassword: recoveryPasswordReducer,
     newPassword: newPasswordReducer,
     registration: registrationReducer,
-    app: appReducer
-
+    app: appReducer,
+    search: searchReducer
 })
 
 export const store = createStore(rootReducer, applyMiddleware(thunk))
