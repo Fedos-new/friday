@@ -1,8 +1,13 @@
 .box {
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrap {
   width: 800px;
   display: flex;
   align-items: center;
+  margin: 0 auto;
 }
 
 .minPrice, .maxPrice {
@@ -14,9 +19,9 @@
 }
 
 .minPrice {
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 .maxPrice {
-  margin-left: 10px;
+  margin-left: 15px;
 }
