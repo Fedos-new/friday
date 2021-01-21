@@ -66,18 +66,23 @@ export const NewPassword = (props: NewPasswordType) => {
 		return <Redirect to={PATH.LOGIN}/>
 	}
 
+
 	return (
 		<div className={s.box}>
 			<h1>New password</h1>
 			<SuperInputText placeholder='New password' value={password} onChange={onChangeInputHandler}
 											error={props.error} onKeyPress={onKeyPressHandler} type='password'/>
 			{
-				props.error &&
-        <>
-          <SuperInputText placeholder='Confirm password' value={confirmedPassword} error={props.error}
-                          onChange={onChangeInputConfirmedHandler} type='password'/>
-					{matchError ? 'Passwords don\'t match!' : ''}
-        </>
+				!props.error ?
+					<>
+						<SuperInputText placeholder='Confirm password' value={confirmedPassword} error={props.error}
+														onChange={onChangeInputConfirmedHandler} type='password'/>
+						{matchError ? 'Passwords don\'t match!' : ''}
+					</>
+					:
+					<>
+						{props.error}
+					</>
 			}
 			<SuperButton disabled={disabled} onClick={onClickButtonHandler} className={s.newPassBtn}>Save</SuperButton>
 		</div>
