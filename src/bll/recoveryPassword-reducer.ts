@@ -65,21 +65,20 @@ export const setAppStatusAC = (status: RequestStatusType) => {
 
 //thunks
 export const sendEmailTC = (email: string) => (dispatch: Dispatch) => {
-  dispatch(setAppStatusAC('loading'))
+	dispatch(setAppStatusAC('loading'))
 	passwordRecoveryAPI.sendEmail(email)
 		.then(res => {
-			console.log(res)
 			if (res.status === 200) {
-        dispatch(setSuccessAC(res.data.info))
-        dispatch(setAppStatusAC('succeeded'))
-      }
+				dispatch(setSuccessAC(res.data.info))
+				dispatch(setAppStatusAC('succeeded'))
+			}
 		})
 		.catch(err => {
 			const error = err.response
 				? err.response.data.error
 				: (err.message + ', more details in the console')
 			dispatch(setErrorAC(error))
-      dispatch(setAppStatusAC('failed'))
+			dispatch(setAppStatusAC('failed'))
 		})
 }
 

@@ -77,7 +77,7 @@ export const NewPassword = (props: NewPasswordType) => {
 			{
 				!props.error &&
 					<>
-						<SuperInputText placeholder='Confirm password' value={confirmedPassword} error={props.error}
+						<SuperInputText placeholder='Confirm password' value={confirmedPassword}
 														onChange={onChangeInputConfirmedHandler} type='password'/>
 						<div className={s.error}>{matchError ? 'Passwords don\'t match!' : ''}</div>
 					</>
