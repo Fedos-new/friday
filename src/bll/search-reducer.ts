@@ -1,5 +1,6 @@
 const SET_SEARCH_NAME = 'SET_SEARCH_NAME';
 const SET_MIN_MAX_PRICE_RANGE = 'SET_MIN_MAX_PRICE_RANGE';
+const SET_SORTING = 'SET_SORTING';
 
 
 const initialState = {
@@ -55,7 +56,7 @@ export const searchReducer = (state: initialStateType = initialState, action: Ac
 			}
 		}
 		case SET_MIN_MAX_PRICE_RANGE: {
-			return  {
+			return {
 				...state,
 				settings: {
 					...state.settings,
@@ -64,14 +65,25 @@ export const searchReducer = (state: initialStateType = initialState, action: Ac
 				}
 			}
 		}
+		case SET_SORTING : {
+			return {
+				...state,
+				settings: {
+					...state.settings,
+					sortProducts: action.value
+				}
+			}
+		}
 		default:
 			return state
 	}
 }
 
-export const setSearchNameAC = (searchName: string) => ({type: SET_SEARCH_NAME, searchName } as const)
-export const setMinMaxPriceRangeAC = (min: number, max: number) => ({type: SET_MIN_MAX_PRICE_RANGE, min, max } as const)
+export const setSearchNameAC = (searchName: string) => ({type: SET_SEARCH_NAME, searchName} as const)
+export const setMinMaxPriceRangeAC = (min: number, max: number) => ({type: SET_MIN_MAX_PRICE_RANGE, min, max} as const)
+export const setSortingAC = (value: string) => ({type: SET_SORTING, value} as const)
 
 type ActionsType =
 	ReturnType<typeof setSearchNameAC>
- | 	ReturnType<typeof setMinMaxPriceRangeAC>
+	| ReturnType<typeof setMinMaxPriceRangeAC>
+	| ReturnType<typeof setSortingAC>

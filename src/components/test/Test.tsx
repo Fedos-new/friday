@@ -4,6 +4,7 @@ import SuperButton from "../common/SuperButton/SuperButton";
 import SuperCheckbox from "../common/SuperCheckbox/SuperCheckbox";
 import Search from '../common/Search/Search';
 import {PriceRange} from '../common/PriceRange/PriceRange';
+import {SortButton} from '../common/SortButton/SortButton';
 
 
 export const Test = () => {
@@ -15,8 +16,9 @@ export const Test = () => {
       <hr />
       <Search />
       <hr />
-
       <PriceRange />
+      <hr />
+      <SortButton />
     </div>
   );
 }
