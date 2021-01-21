@@ -13,7 +13,7 @@ const initialState = {
 		{id: '4', productName: 'window1', price: 30},
 		{id: '5', productName: 'flat', price: 200},
 		{id: '6', productName: 'model2', price: 100},
-		{id: '7', productName: 'note', price: 30},
+		{id: '7', productName: 'note1', price: 30},
 		{id: '8', productName: 'cow1', price: 200},
 		{id: '9', productName: 'pen22', price: 100},
 		{id: '10', productName: 'food', price: 100},
@@ -26,7 +26,7 @@ const initialState = {
 		{id: '17', productName: 'note', price: 30},
 		{id: '18', productName: 'cow', price: 2900},
 		{id: '19', productName: 'pen', price: 100},
-		{id: '20', productName: 'food', price: 100},
+		{id: '20', productName: 'food2', price: 100},
 	],
 	settings: {
 		minPrice: 1000,
@@ -35,7 +35,7 @@ const initialState = {
 		max: 9000,
 		searchName: '',
 		sortProducts: '',
-		page: 0,
+		page: 1,
 		pageCount: 5,
 		productTotalCount: 20,
 	}

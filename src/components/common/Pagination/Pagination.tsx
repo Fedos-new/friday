@@ -107,7 +107,6 @@ export const Pagination = () => {
 		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
 	) => {
 		setRowsPerPage(parseInt(event.target.value, 10));
-		console.log(parseInt(event.target.value, 10))
 		paginate(0);
 	};
 
