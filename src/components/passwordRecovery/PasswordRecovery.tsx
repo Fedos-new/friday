@@ -20,7 +20,7 @@ export const PasswordRecovery = (props: PasswordRecoveryType) => {
 
 	const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
 		setDisabled(false)
-		event.currentTarget.value && setEmail(event.currentTarget.value)
+		setEmail(event.currentTarget.value)
 		dispatch(setErrorAC(''))
 	}
 
@@ -54,6 +54,7 @@ export const PasswordRecovery = (props: PasswordRecoveryType) => {
 					<>
 						<h1>Recover Password</h1>
 						<SuperInputText placeholder='Email' value={email} onKeyPress={onKeyPressHandler} onChange={onChangeInputHandler} type='text' error={props.error}/>
+						<div className={s.error}>{props.error && props.error}</div>
 						<SuperButton onClick={onClickButtonHandler} disabled={disabled}
 												 className={s.recoveryBtn}> Send </SuperButton>
 					</>
