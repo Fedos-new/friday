@@ -19,11 +19,10 @@ export const LoginContainer = () => {
     }
 
     return (
-        <div>
             <Login
                 status={status}
                 serverError={serverError}
             />
-        </div>
+
     );
 }

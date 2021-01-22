@@ -1,30 +1,27 @@
-import React from 'react';
-import {NavLink} from "react-router-dom";
-import {PATH} from "../Routes";
-import style from "../header/Header.module.css"
+import React, {useState} from 'react';
+import styleH from "../header/Header.module.css"
+import {Modal} from "../common/Modal/Modal";
+import SuperButton from "../common/SuperButton/SuperButton";
+import { Menu } from '../common/Menu/Menu';
 
 
 export const Header: React.FC = () => {
+
+    const [active, setActive] = useState(false)
+
     return (
-        <div className={style.wrap}>
-            <div>
-                <NavLink className={style.link} to={PATH.REGISTRATION}>Registration</NavLink>
-            </div>
-            <div>
-                <NavLink className={style.link} to={PATH.LOGIN}>Login</NavLink>
-            </div>
-            <div>
-                <NavLink className={style.link} to={PATH.PROFILE}>Profile</NavLink>
-            </div>
-            <div>
-                <NavLink className={style.link} to={PATH.RECOVERY_PASSWORD}>Recovery Password</NavLink>
-            </div>
-            <div>
-                <NavLink className={style.link} to={PATH.NEW_PASSWORD}>NewPassword</NavLink>
-            </div>
-            <div>
-                <NavLink className={style.link} to={PATH.TEST}>Test</NavLink>
-            </div>
+        <div className={styleH.wrap}>
+            <SuperButton className={active ? styleH.btnMenu : styleH.btnMenuActive}
+                         onClick={() => setActive(true)}>
+                Menu
+            </SuperButton>
+            {!active && <Menu className={styleH.nav}/>}
+
+
+            {active &&   <Modal activeModal={active} setActiveModal={setActive}>
+                <Menu className={styleH.navActive}/>
+                </Modal>
+            }
         </div>
     )
 }

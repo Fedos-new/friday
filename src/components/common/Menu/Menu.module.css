@@ -1,0 +1,33 @@
+.wrapLink{
+    margin: 12px 0;
+}
+
+.link {
+    padding-right: 25px;
+    text-decoration: none;
+    color: #282c34;
+    letter-spacing: 2px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.link:active {
+    color: #d03566;
+}
+
+.nav{
+    display: flex;
+    justify-content: flex-end;;
+    padding: 10px 0;
+}
+
+@media (max-width: 650px) {
+    .nav {
+        display: none;
+    }
+    .navActive {
+        display: flex;
+        justify-content: flex-end;;
+        padding: 10px 0;
+    }
+}

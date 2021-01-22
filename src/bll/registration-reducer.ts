@@ -1,26 +1,20 @@
-
+import {Dispatch} from "redux";
+import {setAppErrorAC, SetAppErrorActionType, setAppStatusAC, SetAppStatusActionType} from "./app-reducer";
+import {registrationAPI, RegistrationParamsType} from "../dal/RegistrationAPI";
 
 const ADD_NEW_USER = 'addUserAC';
 
-type InitialStateType = {
-    name: string,
-    password: string,
-    checkPassword: string
-}
-
 const initialState: InitialStateType = {
-    name: '',
-    password: '',
-    checkPassword: ''
+    isRegistration: false
 }
 
 export const registrationReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
         case ADD_NEW_USER:
-            state.name = action.name
-            state.password = action.password
-            state.checkPassword = action.checkPassword
-            return {...state}
+            return {
+               ...state,
+                isRegistration: action.isRegistration
+            }
         default:
             return state
     }
@@ -28,17 +22,30 @@ export const registrationReducer = (state: InitialStateType = initialState, acti
 
 // actions
 
-export const addUserAC = (name:string, password:string, checkPassword:string):addUserType => 
-({type: 'addUserAC', name, password, checkPassword})
+export const addUserAC = (isRegistration: boolean) =>({type: ADD_NEW_USER, isRegistration} as const)
 
 //thunks
 
+export const registrationTC = (data: RegistrationParamsType) => (dispatch: Dispatch<ActionsType>) => {
+    dispatch(setAppStatusAC('loading'))
+    registrationAPI.registration(data)
+        .then(res => {
+            dispatch(addUserAC(true))
+            dispatch(setAppStatusAC('succeeded'))
 
-type addUserType = {
-    type: 'addUserAC',
-    name:string, 
-    password:string, 
-    checkPassword:string
+        })
+        .catch(rej => {
+            dispatch(setAppErrorAC(rej.response.data.error))
+            dispatch(setAppStatusAC('succeeded'))
+        })
 }
 
-type ActionsType = addUserType
+
+export type ActionsType = ReturnType<typeof addUserAC>
+    |SetAppErrorActionType
+    | SetAppStatusActionType
+
+
+type InitialStateType = {
+    isRegistration: boolean
+}

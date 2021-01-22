@@ -9,6 +9,10 @@
     margin-top: 5px;
     text-decoration: none;
 }
+.link:visited {
+    text-decoration: none;
+    color: #000000;
+}
 .error {
     color: #d03566;
     padding: 10px 0;

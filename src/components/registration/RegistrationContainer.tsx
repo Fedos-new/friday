@@ -1,21 +1,24 @@
 import React from 'react';
 import {Registration} from "./Registration";
-import { useDispatch, useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 import {AppRootState} from '../../bll/store'
+import {RequestErrorType, RequestStatusType} from "../../bll/app-reducer";
+import {Redirect} from "react-router-dom";
+import {PATH} from "../Routes";
 
 export const RegistrationContainer = () => {
-  
-  const name = useSelector((state:AppRootState) => state.registration.name)
-  const password = useSelector((state:AppRootState) => state.registration.password)
-  const checkPassword = useSelector((state:AppRootState) => state.registration.checkPassword)
 
-  return (
-    <div>
-      <Registration
-      name={name}
-      password={password}
-      checkPassword={checkPassword}
-      />
-    </div>
-  );
+    const status = useSelector<AppRootState, RequestStatusType>(state => state.app.status)
+    const serverError = useSelector<AppRootState, RequestErrorType>(state => state.app.error)
+    const isRegistration = useSelector<AppRootState, boolean>(state => state.registration.isRegistration)
+
+    if (isRegistration) {
+        return <Redirect to={PATH.LOGIN}/>
+    }
+    return (
+        <Registration
+            serverError={serverError}
+            status={status}
+        />
+    );
 }

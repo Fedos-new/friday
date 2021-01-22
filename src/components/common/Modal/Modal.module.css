@@ -1,0 +1,28 @@
+.modal {
+    height: 80vh;
+    width: 100vh;
+    position: fixed;
+    top:0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    transform: scale(0);
+}
+.modalActive{
+    transform: scale(1);
+    transition: 0.17s;
+}
+.btnClose{
+    display: flex;
+    margin-left: auto;
+    margin-right: 0;
+    position: fixed;
+    top: -48px;
+    right: 0;
+}
+
+.modalContent {
+    padding: 20px 0 20px 44px;
+    border-radius: 30px;
+    background-color: transparent;
+}

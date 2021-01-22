@@ -64,7 +64,6 @@ export const setAppStatusAC = (status: RequestStatusType) => {
 
 
 //thunks
-
 export const sendNewPasswordTC = (newPassword: string, token: string) => (dispatch: Dispatch) => {
 	dispatch(setAppStatusAC('loading'))
 	newPasswordAPI.sendNewPassword(newPassword, token)

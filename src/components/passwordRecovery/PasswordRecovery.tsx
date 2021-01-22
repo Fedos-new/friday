@@ -52,7 +52,7 @@ export const PasswordRecovery = (props: PasswordRecoveryType) => {
 					</>
 					:
 					<>
-						<h1>Recover Password</h1>
+						<h2>Recover Password</h2>
 						<SuperInputText placeholder='Email' value={email} onKeyPress={onKeyPressHandler} onChange={onChangeInputHandler} type='text' error={props.error}/>
 						<SuperButton onClick={onClickButtonHandler} disabled={disabled}
 												 className={s.recoveryBtn}> Send </SuperButton>

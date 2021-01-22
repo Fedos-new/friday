@@ -53,11 +53,13 @@ export const Login = (props: LoginType) => {
         },
     });
 
+    if (status === 'loading') {
+        return <Preloader/>
+    }
 
     return (
         <div className={style.wrap}>
             <h2>Login</h2>
-            {status === 'loading' && <Preloader/>}
             <form onSubmit={formik.handleSubmit}>
                 <div className={style.formLogin}>
                     <SuperInputText placeholder='email'

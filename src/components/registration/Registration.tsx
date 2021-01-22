@@ -1,71 +1,109 @@
-import React, { useState } from 'react'
-import s from './Registration.module.css'
-import {useFormik} from 'formik'
-import { useDispatch, useSelector } from 'react-redux';
-import {AppRootState} from '../../bll/store'
-import {addUserAC} from '../../bll/registration-reducer'
+import React, {useState} from 'react';
+import style from './Registration.module.css';
+import {useFormik} from 'formik';
+import {useDispatch} from 'react-redux';
+import {NavLink} from "react-router-dom";
+import {RequestErrorType, RequestStatusType} from "../../bll/app-reducer";
+import {PATH} from "../Routes";
+import {Preloader} from "../common/Preloader/Preloader";
+import SuperInputText from "../common/SuperInputText/SuperInputText";
+import SuperButton from "../common/SuperButton/SuperButton";
+import {registrationTC} from "../../bll/registration-reducer";
 
-type PropsType = {
-  name: string
-  password: string
-  checkPassword: string|number
+type RegisterType = {
+    status: RequestStatusType
+    serverError: RequestErrorType
 }
 
-export const Registration = (props:PropsType) => {
+export const Registration = (props: RegisterType) => {
 
-  const dispatch = useDispatch()
+    const {status, serverError} = props
+    const [disable, setDisable] = useState<boolean>(false)
+    const dispatch = useDispatch()
 
-  console.log(props.name)
-  console.log(props.password)
-  console.log(props.checkPassword)
 
-  const formik = useFormik({
-    initialValues: {
-      name: props.name,
-      password: props.password,
-      checkPassword: props.checkPassword
-    },
-    onSubmit: values => {
-      if(values.password === values.checkPassword){
-      setPass(s.formInput)
-      setPassLabel(true)     
-      dispatch(addUserAC(values.name, values.password, values.checkPassword))  
-      }else{
-        setPass(s.redLebel)
-        setPassLabel(false)
-      }
+    type  FormikErrorType = {
+        email?: string
+        password?: string
+        checkPassword?: string
     }
-  })
 
-  let [pass, setPass] = useState(s.formInput)
-  let[passLabel, setPassLabel] = useState(true)
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            password: '',
+            checkPassword: ''
+        },
+        validate: (values) => {
+            const errors: FormikErrorType = {}
+            if (!values.email) {
+                errors.email = 'Email is required';
+                setDisable(true)
+            }
+            if (!values.password) {
+                errors.password = 'Password is required';
+                setDisable(true)
+            } else setDisable(false)
+            if (!values.checkPassword) {
+                errors.checkPassword = 'Password is required';
+                setDisable(true)
+            } else setDisable(false)
+            if (values.password !== values.checkPassword) {
+                errors.checkPassword = 'Passwords are not equal';
+                setDisable(true)
+            } else setDisable(false)
 
-  return (
-    <div className={s.wrapper}> 
-      <div className={s.formWrapper}>
-          <h2 className={s.regTitle}>Регистрация</h2>
+            return errors;
+        },
+        onSubmit: values => {
+            dispatch(registrationTC(values))
 
-          <form onSubmit={formik.handleSubmit}>
-            <div className={s.formItem}>
-              <label htmlFor="nameInputLabel" className={s.label} >Введите своё имя</label>
-              <input type="text" name="name" id="nameInputLabel" className={s.formInput} onChange={formik.handleChange} />
-            </div>
-            <div className={s.formItem}>
-              <label htmlFor="nameInputLabel" className={s.label} >Введите пароль</label>
-              <input type="password" name="password" id="nameInputLabel" className={pass} onChange={formik.handleChange} />
-            </div>
-            <div className={s.formItem}>
-              <label htmlFor="nameInputLabel" className={s.label} >Подтвердите пароль</label>
-              <input type="password" name="checkPassword" id="nameInputLabel" className={pass} onChange={formik.handleChange} />
-              {passLabel? '' : <label htmlFor="nameInputLabel" className={s.labelRed} >Пароли не совпадают!</label>}
-            </div>  
-            <div className={s.formItemButton}>
-                <button type="submit" className={s.formButton}>Отправить</button>
-            </div>
-          </form>
+        }
+    })
 
-      </div>
-    </div>
-  );
+    if (status === 'loading') {
+        return <Preloader/>
+    }
+
+    return (
+        <div className={style.wrapper}>
+            <h2>Registration</h2>
+            <p>Please fill the form for registration</p>
+            <form onSubmit={formik.handleSubmit}>
+                <div className={style.formRegistration}>
+                    <SuperInputText placeholder="email"
+                                    id="email"
+                                    type="email"
+                                    {...formik.getFieldProps('email')}
+                                    error={serverError}
+                    />
+                    {formik.touched.email && formik.errors.email
+                        ? (<div className={style.error}>{formik.errors.email}</div>)
+                        : null
+                    }
+                    <SuperInputText placeholder="password"
+                                    id="password"
+                                    type="password"
+                                    error={serverError}
+                                    {...formik.getFieldProps('password')}
+                    />
+                    {formik.touched.password && formik.errors.password
+                        ? <div className={style.error}>{formik.errors.password}</div>
+                        : null
+                    }
+                    <SuperInputText placeholder="confirm password"
+                                    id="checkPassword"
+                                    type="password"
+                                    error={serverError}
+                                    {...formik.getFieldProps('checkPassword')}
+                    />
+                    <label className={style.label}>password length must be at least 8 characters</label>
+                    <SuperButton type={'submit'} disabled={disable}>Registration</SuperButton>
+                    {serverError ? <div className={style.error}>{serverError}</div> : null}
+                    <NavLink className={style.link} to={PATH.LOGIN}>Login page</NavLink>
+                </div>
+            </form>
+        </div>
+    );
 }
 

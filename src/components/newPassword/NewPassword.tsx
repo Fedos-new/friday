@@ -68,7 +68,7 @@ export const NewPassword = (props: NewPasswordType) => {
 
 	return (
 		<div className={s.box}>
-			<h1>New password</h1>
+			<h2>New password</h2>
 			<SuperInputText placeholder='New password' value={password} onChange={onChangeInputHandler}
 											error={props.error} onKeyPress={onKeyPressHandler} type='password'/>
 			{

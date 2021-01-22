@@ -1,75 +1,24 @@
-.wrapper{
-
-}
-
-.formWrapper{
-    width: 400px;
+.formRegistration {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 304px;
     margin: 0 auto;
-    border-radius: 10px;
-    padding: 15px;
-    -webkit-box-shadow: 0px 0px 12px 3px rgba(34, 60, 80, 1);
-    -moz-box-shadow: 0px 0px 12px 3px rgba(34, 60, 80, 1);
-    box-shadow: 0px 0px 12px 3px rgba(34, 60, 80, 1);
-    box-sizing: border-box;
-    background: #F1F3F4;
 }
-
-.regTitle{
-    margin: 0;
-    padding: 0;
+.link {
+    margin-top: 5px;
+    text-decoration: none;
 }
-
-.formInput{
-    width: 100%;
-    border: 1px solid #757982;
-    border-radius: 5px;
-    margin: 0;
-    padding: 10px;
-    box-sizing: border-box;
+.link:visited {
+    text-decoration: none;
+    color: #000000;
 }
-
-.label{
-    font-size: 12px;
-    font-style: italic;
+.error {
+    color: #d03566;
+    padding: 10px 0;
 }
-
-.labelRed{
-    font-size: 12px;
-    font-style: italic;
-    color: red;  
-}
-
-.formItem{
-    text-align: left;
-    margin: 0 0 10px 0;
-}
-
-.formItemButton{
-    text-align: right;
-    padding: 15px 0 0 0;
-}
-
-.formButton{
-    cursor: pointer;
-    padding: 10px 25px;
-    border: 1px solid #000;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
-    background: linear-gradient(to top, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%);
-}
-
-.formButton:hover{
-    cursor: pointer;
-    background: linear-gradient(to top, rgba(19,19,19,1) 0%,rgba(28,28,28,1) 9%,rgba(43,43,43,1) 24%,rgba(17,17,17,1) 40%,rgba(0,0,0,1) 49%,rgba(44,44,44,1) 50%,rgba(71,71,71,1) 61%,rgba(102,102,102,1) 75%,rgba(89,89,89,1) 88%,rgba(76,76,76,1) 100%);
-}
-
-.redLebel{
-    width: 100%;
-    border: 1px solid red;
-    border-radius: 5px;
-    margin: 0;
-    padding: 10px;
-    box-sizing: border-box;
+.label {
+    font-size: 11px;
+    color: #4c4e52;
+    padding: 4px 0;
 }
