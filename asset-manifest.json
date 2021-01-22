@@ -1,23 +1,25 @@
 {
   "files": {
-    "main.css": "/friday/static/css/main.be900374.chunk.css",
-    "main.js": "/friday/static/js/main.29f735c3.chunk.js",
-    "main.js.map": "/friday/static/js/main.29f735c3.chunk.js.map",
-    "runtime-main.js": "/friday/static/js/runtime-main.619ed127.js",
-    "runtime-main.js.map": "/friday/static/js/runtime-main.619ed127.js.map",
-    "static/js/2.9f053e97.chunk.js": "/friday/static/js/2.9f053e97.chunk.js",
-    "static/js/2.9f053e97.chunk.js.map": "/friday/static/js/2.9f053e97.chunk.js.map",
-    "static/js/3.a9449c54.chunk.js": "/friday/static/js/3.a9449c54.chunk.js",
-    "static/js/3.a9449c54.chunk.js.map": "/friday/static/js/3.a9449c54.chunk.js.map",
+    "main.css": "/friday/static/css/main.f45a0ba9.chunk.css",
+    "main.js": "/friday/static/js/main.71a50695.chunk.js",
+    "main.js.map": "/friday/static/js/main.71a50695.chunk.js.map",
+    "runtime-main.js": "/friday/static/js/runtime-main.c04c4c41.js",
+    "runtime-main.js.map": "/friday/static/js/runtime-main.c04c4c41.js.map",
+    "static/js/2.92c02afc.chunk.js": "/friday/static/js/2.92c02afc.chunk.js",
+    "static/js/2.92c02afc.chunk.js.map": "/friday/static/js/2.92c02afc.chunk.js.map",
+    "static/js/3.aeadfacc.chunk.js": "/friday/static/js/3.aeadfacc.chunk.js",
+    "static/js/3.aeadfacc.chunk.js.map": "/friday/static/js/3.aeadfacc.chunk.js.map",
     "index.html": "/friday/index.html",
-    "static/css/main.be900374.chunk.css.map": "/friday/static/css/main.be900374.chunk.css.map",
-    "static/js/2.9f053e97.chunk.js.LICENSE.txt": "/friday/static/js/2.9f053e97.chunk.js.LICENSE.txt",
-    "static/media/preloader.b78a56d2.svg": "/friday/static/media/preloader.b78a56d2.svg"
+    "static/css/main.f45a0ba9.chunk.css.map": "/friday/static/css/main.f45a0ba9.chunk.css.map",
+    "static/js/2.92c02afc.chunk.js.LICENSE.txt": "/friday/static/js/2.92c02afc.chunk.js.LICENSE.txt",
+    "static/media/down-arrow.9a3add57.svg": "/friday/static/media/down-arrow.9a3add57.svg",
+    "static/media/preloader.b78a56d2.svg": "/friday/static/media/preloader.b78a56d2.svg",
+    "static/media/up-arrow.7bcbc04e.svg": "/friday/static/media/up-arrow.7bcbc04e.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.619ed127.js",
-    "static/js/2.9f053e97.chunk.js",
-    "static/css/main.be900374.chunk.css",
-    "static/js/main.29f735c3.chunk.js"
+    "static/js/runtime-main.c04c4c41.js",
+    "static/js/2.92c02afc.chunk.js",
+    "static/css/main.f45a0ba9.chunk.css",
+    "static/js/main.71a50695.chunk.js"
   ]
 }
