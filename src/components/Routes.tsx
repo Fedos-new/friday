@@ -16,6 +16,7 @@ export const PATH = {
     ERROR_404:'/404',
     RECOVERY_PASSWORD:'/rec_pass',
     NEW_PASSWORD:'/new_pass',
+    PACKS:'/packs',
     TEST:'/test',
 }
 

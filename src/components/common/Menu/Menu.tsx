@@ -27,7 +27,6 @@ export const Menu: React.FC<MenuType> = ({className}) => {
                 <NavLink className={style.link} to={PATH.NEW_PASSWORD}>NewPassword</NavLink>
             </div>
             <div className={style.wrapLink}>
-                {/*<NavLink className={style.link} to={PATH.TEST}>Test</NavLink>*/}
             </div>
         </div>
     )
