@@ -68,6 +68,7 @@ export const sendNewPasswordTC = (newPassword: string, token: string) => (dispat
 	dispatch(setAppStatusAC('loading'))
 	newPasswordAPI.sendNewPassword(newPassword, token)
 		.then(res => {
+			console.log(res.data.message)
 			dispatch(setSuccessAC(res.data.message))
 			dispatch(setAppStatusAC('succeeded'))
 		})

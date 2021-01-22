@@ -30,13 +30,13 @@ export const NewPassword = (props: NewPasswordType) => {
 	const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
 		setDisabled(false)
 		setMatchError(false)
-		event.currentTarget.value && setPassword(event.currentTarget.value)
+		setPassword(event.currentTarget.value)
 		dispatch(setErrorAC(''))
 	}
 
 	const onChangeInputConfirmedHandler = (event: ChangeEvent<HTMLInputElement>) => {
 		setMatchError(false)
-		event.currentTarget.value && setConfirmedPassword(event.currentTarget.value)
+		setConfirmedPassword(event.currentTarget.value)
 	}
 
 	const onClickButtonHandler = () => {
@@ -49,6 +49,7 @@ export const NewPassword = (props: NewPasswordType) => {
 		setPassword('')
 		setConfirmedPassword('')
 	}
+
 
 	const onEnter = () => {
 		if (!props.error) {
@@ -66,18 +67,21 @@ export const NewPassword = (props: NewPasswordType) => {
 		return <Redirect to={PATH.LOGIN}/>
 	}
 
+
 	return (
 		<div className={s.box}>
 			<h2>New password</h2>
 			<SuperInputText placeholder='New password' value={password} onChange={onChangeInputHandler}
 											error={props.error} onKeyPress={onKeyPressHandler} type='password'/>
+			<div className={s.error}>{props.error}</div>
 			{
-				props.error &&
-        <>
-          <SuperInputText placeholder='Confirm password' value={confirmedPassword} error={props.error}
-                          onChange={onChangeInputConfirmedHandler} type='password'/>
-					{matchError ? 'Passwords don\'t match!' : ''}
-        </>
+				!props.error &&
+					<>
+						<SuperInputText placeholder='Confirm password' value={confirmedPassword}
+														onChange={onChangeInputConfirmedHandler} type='password'/>
+						<div className={s.error}>{matchError ? 'Passwords don\'t match!' : ''}</div>
+					</>
+
 			}
 			<SuperButton disabled={disabled} onClick={onClickButtonHandler} className={s.newPassBtn}>Save</SuperButton>
 		</div>

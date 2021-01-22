@@ -1,0 +1,31 @@
+.box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.up {
+	display: flex;
+	height: 20px;
+}
+
+.down {
+	display: flex;
+	height: 20px;
+}
+
+.btnUp, .btnDown {
+	cursor: pointer;
+
+}
+
+.btnUp:hover, .btnDown:hover {
+	cursor: pointer;
+	opacity: 0.8;
+	background-color: #4c84e0 !important;
+}
+
+.btnDown {
+	cursor: pointer;
+}

@@ -1,0 +1,32 @@
+.box {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrap {
+  width: 800px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.minPrice, .maxPrice {
+  color: #ffffff;
+  background-color: #4c84e0;
+  border-radius: 30px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  padding: 10px 15px 10px 16px;
+  transition: 0.3s;
+  outline: none;
+}
+
+.minPrice {
+  margin-right: 15px;
+}
+
+.maxPrice {
+  margin-left: 15px;
+}
