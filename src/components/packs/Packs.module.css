@@ -1,0 +1,34 @@
+.packsList {
+	display: flex;
+	flex-direction: column;
+	width: 300px;
+	margin: 0 auto;
+}
+
+.packsItem {
+	display: flex;
+	justify-content: space-around;
+	border: 1px solid #4c84e0;
+}
+
+.searchBox {
+	display: flex;
+	justify-content: center;
+}
+
+.error {
+	color: red;
+}
+
+.packsBox {
+	min-height: 90vh;
+	display: flex;
+	flex-direction: column;
+	/*justify-content: space-between;*/
+}
+.paginateBox {
+	position: fixed;
+	bottom: 0;
+	left: 25%;
+	right: 25%;
+}

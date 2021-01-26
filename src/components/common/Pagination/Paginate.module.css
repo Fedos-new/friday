@@ -1,0 +1,45 @@
+.paginationList {
+	display: flex;
+	justify-content: center;
+	list-style: none;
+}
+
+.paginationItem {
+	padding: 10px;
+}
+
+.paginationLink {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 20px;
+	height: 20px;
+	text-decoration: none;
+	font-size: 20px;
+	padding: 10px;
+	color: #282c34;
+}
+
+.paginationItemActive {
+	color: #4c84e0;
+}
+
+.paginationLinkActive {
+	background-color: #4c84e0;
+	color: white;
+	border-radius: 50%;
+}
+
+.linkClassFirst, .linkClassLast {
+	color: #4c84e0;
+	font-weight: bold;
+}
+
+.linkClassPrev, .linkClassNext {
+	color: #4c84e0;
+	font-weight: bold;
+}
+
+.disabledClass {
+	opacity: 0.3;
+}
