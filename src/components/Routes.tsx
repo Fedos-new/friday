@@ -7,6 +7,7 @@ import {RegistrationContainer} from "./registration/RegistrationContainer";
 import {Error404} from "./error404/Error404";
 import {NewPasswordContainer} from "./newPassword/NewPasswordContainer";
 import {PasswordRecoveryContainer} from "./passwordRecovery/PasswordRecoveryContainer";
+import {PacksContainer} from "./packs/PacksContainer";
 
 
 export const PATH = {
@@ -31,6 +32,7 @@ export const Routes = () => {
                 <Route path={PATH.ERROR_404} render={() => <Error404/>}/>
                 <Route path={PATH.RECOVERY_PASSWORD} render={() => <PasswordRecoveryContainer/>}/>
                 <Route path={PATH.NEW_PASSWORD} render={() => <NewPasswordContainer/>}/>
+                <Route path={PATH.PACKS} render={() => <PacksContainer/>}/>
                 <Route path={PATH.TEST} render={() => <Test/>}/>
                 <Route render={() => <Error404/>}/>
             </Switch>

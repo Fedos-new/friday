@@ -7,7 +7,7 @@ import { recoveryPasswordReducer} from "./recoveryPassword-reducer";
 import {registrationReducer} from "./registration-reducer";
 import {appReducer} from "./app-reducer";
 import {searchReducer} from './search-reducer';
-
+import {packsReducer} from "./packs-reducer";
 
 const rootReducer = combineReducers({
     auth : loginReducer,
@@ -16,11 +16,11 @@ const rootReducer = combineReducers({
     newPassword: newPasswordReducer,
     registration: registrationReducer,
     app: appReducer,
-    search: searchReducer
+    search: searchReducer,
+    packs: packsReducer
 })
 
 export const store = createStore(rootReducer, applyMiddleware(thunk))
-
 export type AppRootState = ReturnType<typeof rootReducer> //автомачически подтягивает типы из combineReducers
 
 // @ts-ignore

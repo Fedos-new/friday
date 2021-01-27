@@ -9,8 +9,19 @@ type MenuType = {
 
 export const Menu: React.FC<MenuType> = ({className}) => {
 
+
+
+
+
+
+
+
     return (
         <div className={`${className}`}>
+
+
+
+
             <div className={style.wrapLink}>
                 <NavLink className={style.link} to={PATH.REGISTRATION}>Registration</NavLink>
             </div>
@@ -25,6 +36,9 @@ export const Menu: React.FC<MenuType> = ({className}) => {
             </div>
             <div className={style.wrapLink}>
                 <NavLink className={style.link} to={PATH.NEW_PASSWORD}>NewPassword</NavLink>
+            </div>
+            <div className={style.wrapLink}>
+                <NavLink className={style.link} to={PATH.PACKS}>Packs</NavLink>
             </div>
             <div className={style.wrapLink}>
             </div>
