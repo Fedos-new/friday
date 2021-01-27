@@ -4,7 +4,7 @@ import SuperButton from '../SuperButton/SuperButton';
 import up from './../../../assets/image/up-arrow.svg'
 import down from './../../../assets/image/down-arrow.svg'
 import {useDispatch} from 'react-redux';
-import {getPacksTC, setSortingAC} from '../../../bll/search-reducer';
+import {getPacksTC, setSortingAC} from '../../../bll/searchPacks-reducer';
 
 export const SortButton: React.FC = () => {
 	const dispatch = useDispatch();

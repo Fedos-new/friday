@@ -28,6 +28,9 @@ export const Header: React.FC = () => {
           <div>
             <NavLink className={style.link} to={PATH.PACKS}>Packs</NavLink>
           </div>
+          <div>
+            <NavLink className={style.link} to={PATH.CARDS}>Cards</NavLink>
+          </div>
         </div>
     )
 }

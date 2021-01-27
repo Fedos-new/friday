@@ -1,0 +1,73 @@
+.tableBox {
+	display: flex;
+	flex-direction: column;
+}
+
+
+.table {
+	border-collapse: collapse;
+	border: 3px solid #ddd;
+}
+
+.table td,
+.table th {
+	border: 1px solid #ddd;
+	padding: 12px;
+}
+
+.table tr:hover {
+	background-color: #dddddd;
+}
+
+.table th {
+	padding: 10px;
+	text-align: center;
+	background-color: #4c84e0;
+	color: white;
+}
+
+.operation {
+	text-align: center;
+}
+
+.delBtn, .updBtn {
+	cursor: pointer;
+}
+
+.updBtn {
+	border-color: mediumseagreen;
+	background-color: mediumseagreen;
+}
+
+.delBtn {
+	border-color: #d03566;
+	background-color: #d03566;
+}
+
+.cardLink {
+	text-decoration: none;
+	cursor: pointer;
+	color: #4c84e0;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+.cardLink:hover {
+	font-size: 14px;
+	color: #307ae5;
+}
+
+.addBtn {
+	cursor: pointer;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+.error {
+	color: red;
+}
+
+.errorBox {
+	min-height: 20px;
+}

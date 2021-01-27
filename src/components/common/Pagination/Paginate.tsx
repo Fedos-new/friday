@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {AppRootState} from '../../../bll/store';
 import Pagination from 'react-js-pagination';
 import s from './Paginate.module.css';
-import {getPacksTC, setCurrentPageAC} from '../../../bll/search-reducer';
+import {getPacksTC, setCurrentPageAC} from '../../../bll/searchPacks-reducer';
 
 type PaginatePropsType = {
 	totalPacksCount: number

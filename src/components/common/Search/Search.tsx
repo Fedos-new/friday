@@ -2,7 +2,7 @@ import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import SuperButton from '../SuperButton/SuperButton';
 import SuperInputText from '../SuperInputText/SuperInputText';
 import {useDispatch} from 'react-redux';
-import {getPacksTC, setSearchNameAC} from '../../../bll/search-reducer';
+import {getPacksTC, setSearchNameAC} from '../../../bll/searchPacks-reducer';
 import s from './Search.module.css'
 
 

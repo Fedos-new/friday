@@ -5,6 +5,10 @@
 	margin: 0 auto;
 }
 
+.packsContent {
+	flex: 1 0 auto;
+}
+
 .packsItem {
 	display: flex;
 	justify-content: space-around;
@@ -17,18 +21,23 @@
 }
 
 .error {
+	margin: 0 auto;
 	color: red;
 }
 
 .packsBox {
-	min-height: 90vh;
+	min-height: 100%;
 	display: flex;
 	flex-direction: column;
-	/*justify-content: space-between;*/
 }
 .paginateBox {
-	position: fixed;
-	bottom: 0;
-	left: 25%;
-	right: 25%;
+	/*position: fixed;*/
+	/*bottom: 0;*/
+	/*left: 25%;*/
+	/*right: 25%;*/
+	flex: 0 0 auto;
+}
+
+.myPacks {
+	cursor: pointer;
 }

@@ -1,9 +1,20 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import {Packs} from './Packs';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppRootState} from '../../bll/store';
-import {getPacksTC, PackType, setCurrentPageAC, setMinMaxPriceRangeAC, setSearchNameAC} from '../../bll/search-reducer';
+import {
+	deletePackTC,
+	getPacksTC,
+	PackType,
+	setCurrentPageAC,
+	setMinMaxPriceRangeAC
+} from '../../bll/searchPacks-reducer';
 import {RequestStatusType} from '../../bll/app-reducer';
+import {NavLink} from 'react-router-dom';
+import {PATH} from '../Routes';
+import s from '../Table/Table.module.css';
+import SuperButton from '../common/SuperButton/SuperButton';
+import { setCardsPackIdAC} from '../../bll/cards-reducer';
 
 
 export const PacksContainer = () => {
@@ -19,6 +30,7 @@ export const PacksContainer = () => {
 	const minPrice = useSelector<AppRootState, number>(state => state.search.min)
 	const maxPrice = useSelector<AppRootState, number>(state => state.search.max)
 	const valueArray = [minPrice, maxPrice]
+	const headerElementPacks = ['USERNAME', 'NAME', 'CARDSCOUNT',  'UPDATED', 'CARDS', 'OPERATIONS']
 
 	const onChangeRange = (value: number | [number, number]) => {
 		if (Array.isArray(value)) {
@@ -29,9 +41,41 @@ export const PacksContainer = () => {
 	const handlePageChange = (pageNumber: number) => {
 		dispatch(setCurrentPageAC(pageNumber))
 		dispatch(getPacksTC())
+
+	}
+
+	const onClickLinkHandler = (id: string) => {
+		dispatch(setCardsPackIdAC(id))
+	}
+	const removePack = (_id: string | null) => {
+		console.log('delete', _id)
+		dispatch(deletePackTC(_id))
+	}
+
+	const updatePack = () => {
+		console.log('updateData',)
 	}
 
 
+	const renderPacksBody = (cardPacks: Array<PackType>) => {
+		return cardPacks && cardPacks.map(({ _id, name, cardsCount,user_name, updated }) => {
+			return (
+				<tr key={_id}>
+					<td>{user_name}</td>
+					<td>{name}</td>
+					<td>{cardsCount}</td>
+					<td>{updated}</td>
+					<td>
+						<NavLink to={PATH.CARDS} className={s.cardLink} onClick={() => {onClickLinkHandler(_id)}}>Cards</NavLink>
+					</td>
+					<td className={s.operation}>
+						<SuperButton onClick={() => updatePack()} className={s.updBtn}>Update</SuperButton>
+						<SuperButton onClick={() => removePack(_id)} className={s.delBtn}>Delete</SuperButton>
+					</td>
+				</tr>
+			)
+		})
+	}
 
 	return (
 		<div>
@@ -44,6 +88,8 @@ export const PacksContainer = () => {
 						 maxPrice={maxPrice}
 						 valueArray={valueArray}
 						 onChangeRange={onChangeRange}
+						 renderPacksBody={renderPacksBody}
+						 headerElementPacks={headerElementPacks}
 			/>
 		</div>
 	)
