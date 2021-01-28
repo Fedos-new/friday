@@ -45,7 +45,7 @@ export const setProfileTC = () => (dispatch: Dispatch<ActionsType>) => {
             dispatch(setIsLoggedInAC(true))
             }
         )
-        .catch(e => {
+        .catch(rej => {
             dispatch(setIsLoggedInAC(false))
         })
 }
