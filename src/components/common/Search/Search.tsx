@@ -2,36 +2,33 @@ import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import SuperButton from '../SuperButton/SuperButton';
 import SuperInputText from '../SuperInputText/SuperInputText';
 import {useDispatch} from 'react-redux';
-import {setSearchNameAC} from '../../../bll/search-reducer';
+import {getPacksTC, setSearchNameAC} from '../../../bll/searchPacks-reducer';
 import s from './Search.module.css'
 
-const Search: React.FC = () => {
-	const [value, setValue] =useState<string>('')
-	const [disabled, setDisabled] = useState<boolean>(true)
+
+const Search = () => {
+	const [value, setValue] = useState<string>('')
 	const dispatch = useDispatch()
 
 	const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
-		setDisabled(false)
-		event.currentTarget.value && setValue(event.currentTarget.value)
+		event.currentTarget.value && setSearchNameAC(event.currentTarget.value)
+		event.currentTarget.value && dispatch(setSearchNameAC(event.currentTarget.value))
 	}
 
 	const onSearchHandler = () => {
-		dispatch(setSearchNameAC(value))
+		dispatch(getPacksTC())
 		setValue('')
-		setDisabled(true)
 	}
 
 	const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && onSearchHandler();
 
 	return (
 		<div>
-			<h1>Search</h1>
-
-			<SuperInputText value={value} onKeyPress={onKeyPressHandler} onChange={onChangeInputHandler}
+			<SuperInputText onKeyPress={onKeyPressHandler} onChange={onChangeInputHandler}
 											placeholder={'product name'}/>
 
 
-			<SuperButton className={s.searchBtn} onClick={onSearchHandler} disabled={disabled}>Search</SuperButton>
+			<SuperButton className={s.searchBtn} onClick={onSearchHandler}>Search</SuperButton>
 		</div>
 	);
 };

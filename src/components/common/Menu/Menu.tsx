@@ -28,6 +28,12 @@ export const Menu: React.FC<MenuType> = ({className}) => {
             </div>
             <div className={style.wrapLink}>
             </div>
+            <div  className={style.wrapLink}>
+                <NavLink className={style.link} to={PATH.PACKS}>Packs</NavLink>
+            </div>
+            <div className={style.wrapLink}>
+                <NavLink className={style.link} to={PATH.CARDS}>Cards</NavLink>
+            </div>
         </div>
     )
 }

@@ -4,18 +4,20 @@ import SuperButton from '../SuperButton/SuperButton';
 import up from './../../../assets/image/up-arrow.svg'
 import down from './../../../assets/image/down-arrow.svg'
 import {useDispatch} from 'react-redux';
-import {setSortingAC} from '../../../bll/search-reducer';
+import {getPacksTC, setSortingAC} from '../../../bll/searchPacks-reducer';
 
 export const SortButton: React.FC = () => {
 	const dispatch = useDispatch();
 
-	const sortPrice = (x: string) => dispatch(setSortingAC(x))
-	const sortUp = () => sortPrice('1')
-	const sortDown = () => sortPrice('0')
+	const sortPrice = (x: string) => {
+		dispatch(setSortingAC(x))
+		dispatch(getPacksTC())
+	}
+	const sortUp = () => sortPrice('1updated')
+	const sortDown = () => sortPrice('0updated')
 
 	return (
 		<div className={s.box}>
-			<h1>Sort Button</h1>
 			<div>
 				<SuperButton className={s.btnUp} onClick={sortUp}>
 					<img src={up} className={s.up}/>

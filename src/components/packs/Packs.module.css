@@ -1,0 +1,43 @@
+.packsList {
+	display: flex;
+	flex-direction: column;
+	width: 300px;
+	margin: 0 auto;
+}
+
+.packsContent {
+	flex: 1 0 auto;
+}
+
+.packsItem {
+	display: flex;
+	justify-content: space-around;
+	border: 1px solid #4c84e0;
+}
+
+.searchBox {
+	display: flex;
+	justify-content: center;
+}
+
+.error {
+	margin: 0 auto;
+	color: red;
+}
+
+.packsBox {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.paginateBox {
+	/*position: fixed;*/
+	/*bottom: 0;*/
+	/*left: 25%;*/
+	/*right: 25%;*/
+	flex: 0 0 auto;
+}
+
+.myPacks {
+	cursor: pointer;
+}

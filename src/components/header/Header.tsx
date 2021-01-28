@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styleH from "../header/Header.module.css"
-import {Modal} from "../common/Modal/Modal";
-import SuperButton from "../common/SuperButton/SuperButton";
+import SuperButton from '../common/SuperButton/SuperButton';
 import { Menu } from '../common/Menu/Menu';
+import { Modal } from '../common/Modal/Modal';
+import { useState } from 'react';
 
 
 export const Header: React.FC = () => {
@@ -10,6 +11,7 @@ export const Header: React.FC = () => {
     const [active, setActive] = useState(false)
 
     return (
+
         <div className={styleH.wrap}>
             <SuperButton className={active ? styleH.btnMenu : styleH.btnMenuActive}
                          onClick={() => setActive(true)}>

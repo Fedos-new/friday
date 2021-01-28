@@ -1,7 +1,8 @@
 import React, {ChangeEvent} from 'react';
 import {Slider} from '@material-ui/core';
-import s from './PriceRange.module.css'
+import s from './DoubleRangeSlider.module.css'
 import {withStyles} from '@material-ui/styles';
+
 
 const StyledSlider = withStyles({
 	root: {
@@ -21,29 +22,40 @@ const StyledSlider = withStyles({
 })(Slider);
 
 type DoubleRangeSliderType = {
+	maxCardsCount: number
+	minCardsCount: number
 	minPrice: number
 	maxPrice: number
 	valueArray:  Array<number>
 	onChangeRange: (value: number | [number, number]) => void
 }
-export const DoubleRangeSlider: React.FC<DoubleRangeSliderType> = ({minPrice, maxPrice, valueArray, onChangeRange}) => {
+export const DoubleRangeSlider: React.FC<DoubleRangeSliderType> = (
+	{
+		minPrice, maxPrice, valueArray, onChangeRange, minCardsCount,maxCardsCount
+	}
+
+	) => {
 
 	const onChangeHandler = (event: ChangeEvent<{}>, value: (number[] | number)) => {
 		onChangeRange && onChangeRange(value as number)
 	}
 
+
 	return (
-		<div className={s.wrap}>
-			<p className={s.minPrice}>{minPrice}</p>
-			<StyledSlider
-				value={valueArray}
-				onChange={onChangeHandler}
-				valueLabelDisplay="auto"
-				aria-labelledby="range-slider"
-				min={minPrice}
-				max={maxPrice}
-			/>
-			<p className={s.maxPrice}>{maxPrice}</p>
+		<div className={s.box}>
+			<div className={s.wrap}>
+				<p className={s.minPrice}>{minPrice}</p>
+				<StyledSlider
+					value={valueArray}
+					onChange={onChangeHandler}
+					valueLabelDisplay="auto"
+					aria-labelledby="range-slider"
+					min={minCardsCount}
+					max={maxCardsCount}
+				/>
+				<p className={s.maxPrice}>{maxPrice}</p>
+			</div>
 		</div>
+
 	);
 }
