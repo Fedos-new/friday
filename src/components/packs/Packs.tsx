@@ -29,6 +29,7 @@ type PacksType = {
 	renderPacksBody: (cardPacks: Array<PackType>) => ReactNode
 	headerElementPacks: Array<string>
 	addPack: (name: string) => void
+	isLoggedIn: boolean
 }
 
 export const Packs: FC<PacksType> = (
@@ -37,13 +38,14 @@ export const Packs: FC<PacksType> = (
 		page, totalPacksCount, packsPerPage, handlePageChange,
 		maxCardsCount, minCardsCount, minPrice, maxPrice, valueArray, onChangeRange,
 		renderPacksBody, headerElementPacks,
-		addPack
+		addPack, isLoggedIn
 	}
 ) => {
 	const dispatch = useDispatch()
 	const myID = useSelector<AppRootState, string | null>(state => state.profile.profile._id)
 
 	useEffect(() => {
+		if (!isLoggedIn) return
 		dispatch(setMyIdAC(null))
 		dispatch(getPacksTC())
 	}, [dispatch])

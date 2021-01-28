@@ -7,7 +7,6 @@ import {addCardTC, CardType} from '../../bll/cards-reducer';
 import SuperButton from '../common/SuperButton/SuperButton';
 
 
-
 type TablePropsType = {
 	headerElement: Array<string>
 	renderPacksBody?: (cardPacks: Array<PackType>) => ReactNode
@@ -21,6 +20,8 @@ export const Table: FC<TablePropsType> = ({headerElement, renderPacksBody, rende
 	const error = useSelector<AppRootState, string>(state => state.cards.error)
 	const cardsPackId = useSelector<AppRootState, string>(state => state.cards.cardsPackId)
 	const dispatch = useDispatch()
+	const myID = useSelector<AppRootState, string | null>(state => state.profile.profile._id)
+
 	console.log(cardsPackId)
 
 	const renderHeader = (headerElement: Array<string>) => {
@@ -36,14 +37,15 @@ export const Table: FC<TablePropsType> = ({headerElement, renderPacksBody, rende
 	return (
 		<div className={s.tableBox}>
 			{renderCardsBody && <SuperButton className={s.addBtn} onClick={addNewCardHandler}>Add Card</SuperButton>}
-			{isTableCard && error && !cardsPackId && <div className={s.errorBox}>{error && <div className={s.error}>{error}</div>}</div>}
+			{isTableCard && error && !cardsPackId &&
+      <div className={s.errorBox}>{error && <div className={s.error}>{error}</div>}</div>}
 			<table className={s.table}>
 				<thead>
-					<tr>{renderHeader(headerElement)}</tr>
+				<tr>{renderHeader(headerElement)}</tr>
 				</thead>
 				<tbody>
-					{renderPacksBody ? renderPacksBody(cardPacks) : null}
-					{renderCardsBody && cardsPackId ? renderCardsBody(cards) : null}
+				{renderPacksBody ? renderPacksBody(cardPacks) : null}
+				{renderCardsBody && cardsPackId ? renderCardsBody(cards) : null}
 				</tbody>
 			</table>
 		</div>

@@ -91,6 +91,7 @@ export const PacksContainer = () => {
 						 renderPacksBody={renderPacksBody}
 						 headerElementPacks={headerElementPacks}
 						 addPack={addPack}
+						 isLoggedIn={isLoggedIn}
 			/>
 		</div>
 	)
