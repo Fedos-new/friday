@@ -1,20 +1,23 @@
 import React  from 'react';
+import style from './Table.module.css'
 
 type TablePropsType = {
-    header: Object
+    headers: any
     data: any
 
 }
 
 export const Table: React.FC<TablePropsType> = (
     {
-        header,
+        headers,
         data,
     }
 ) => {
-    console.log(data.cardPacks)
 
-    if (!header || !data) {
+
+    console.log(data);
+
+    if (!data) {
         return <div>No Data</div>
     }
 
@@ -22,15 +25,15 @@ export const Table: React.FC<TablePropsType> = (
         <table className="table">
             <thead>
             <tr>
-                {Object.values(header).map(el => <th >{el.toUpperCase()}</th>)}
+                {Object.keys(headers).map((el:any,index) => <th key={index} className={style.header} >{el.toUpperCase()}</th>)}
             </tr>
             </thead>
             <tbody>
 
 
-            {data.cardPacks.map((item: any) => (
-                <tr key={item._id}>
-                    {Object.values(item).map((value: any) => <td>{value}</td>)}
+            {data.map((item: any, index:number ) => (
+                <tr key={index}>
+                    {Object.values(item).map((value: any,index) => <td key={index}>{value}</td>)}
                     <td>
 
                     </td>
@@ -40,3 +43,113 @@ export const Table: React.FC<TablePropsType> = (
         </table>
     )
 }
+
+
+// пример универсальной таблицы
+// import React, {CSSProperties, ReactNode} from 'react';
+//
+// export interface ITableModel {
+//     title: (index: number) => ReactNode;
+//     render: (dataItem: any, modelIndex: number, dataIndex: number) => ReactNode;
+// }
+//
+// interface ITableProps {
+// // loading: boolean;
+// // error: string;
+// //
+// // logoutCallback: () => void;
+//
+//     model: ITableModel[];
+//     data: any;
+//
+//     headerStyle?: CSSProperties,
+//     tableStyle?: CSSProperties,
+//     rowsStyle?: CSSProperties,
+//     rowStyle?: CSSProperties,
+// }
+//
+// export const Table: React.FC<any> = (
+//     {
+// // loading,
+// // error,
+// //
+// // logoutCallback,
+//
+//         // model,
+//         // data,
+//         //
+//         // headerStyle,
+//         // tableStyle,
+//         // rowsStyle,
+//         // rowStyle,
+//         model
+//     }
+// ) => {
+//     const packsGet =(Object.values(model))
+//
+//     console.log(packsGet);
+//
+//     return (
+//         <div
+//             style={{
+//                 margin: '0 10px',
+//                 // minHeight: '80vh',
+//                 display: 'flex',
+//                 flexFlow: 'column',
+//                 alignItems: 'center',
+//                 justifyContent: 'center',
+//                 // ...tableStyle,
+//             }}
+//         >
+//
+//             {/*{Array.from(new Set(packsGet.map((item: any) => <div>{item.name}</div>)))}*/}
+//
+//             {/*{loading*/}
+//             {/*? <div style={{color: 'orange'}}>loading...</div>*/}
+//             {/*: error*/}
+//             {/*? <div style={{color: 'red'}}>{error}</div>*/}
+//             {/*: <div><br/></div>*/}
+//             {/*}*/}
+//
+//             <div
+//                 style={{
+//                     border: '1px solid red',
+//                     width: '100%',
+//                     display: 'flex',
+//                     flexFlow: 'row',
+//                     alignItems: 'center',
+//                     justifyContent: 'center',
+//                     // ...headerStyle,
+//                 }}
+//             >
+//                 {/*{model.map((m: ITableModel, index: number) => m.title(index))}*/}
+//             </div>
+//
+//             <div
+//                 style={{
+//                     border: '1px solid lime',
+//                     width: '100%',
+//                     // ...rowsStyle,
+//                 }}
+//             >
+//                 {/*{data.map((dataItem: any, dataIndex: number) => (*/}
+//                 {/*    <div*/}
+//                 {/*        key={dataItem._id || dataIndex}*/}
+//                 {/*        style={{*/}
+//                 {/*            width: '100%',*/}
+//                 {/*            display: 'flex',*/}
+//                 {/*            flexFlow: 'row',*/}
+//                 {/*            alignItems: 'center',*/}
+//                 {/*            justifyContent: 'center',*/}
+//                 {/*            ...rowStyle,*/}
+//                 {/*        }}*/}
+//                 {/*    >*/}
+//                 {/*        {model.map((m, modelIndex) => m.render(dataItem, modelIndex, dataIndex))}*/}
+//                 {/*    </div>*/}
+//                 {/*))}*/}
+//             </div>
+//         </div>
+//     );
+// };
+
+

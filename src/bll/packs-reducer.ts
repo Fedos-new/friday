@@ -1,36 +1,29 @@
 import {Dispatch} from 'redux'
 import {setAppErrorAC, SetAppErrorActionType, setAppStatusAC, SetAppStatusActionType} from "./app-reducer";
+import {PacksAPI} from "../dal/PacksAPI";
 
-const GET_PACKS = 'GET_PACKS';
+const SET_PACKS = 'packs/SET_PACKS';
+// const SET_MY_ID = 'packs/SET_MY_ID';
 
 const initialState: PacksType = {
     cardPacks: [
-        {   _id: "5eb6cef840b7bf1cf0d8122d",
-            user_id: "5eb543f6bea3ad21480f1ee7",
-            name: "no Name",
-            path: "/def", // папка
-            cardsCount: 25,
-            grade: 0, // средняя оценка карточек
-            shots: 0,// количество попыток
-            rating: 0, // лайки
-            type: "pack", // ещё будет "folder" (папка)
-            created: "2020-05-09T15:40:40.339Z",
-            updated: "2020-05-09T15:40:40.339Z",
-            __v: 0
+        {   cardsCount: null,
+            created: null,
+            deckCover: null,
+            grade: null,
+            more_id: null,
+            name: null,
+            path: null,
+            private: false,
+            rating: null,
+            shots: null,
+            type: null,
+            updated: null,
+            user_id: null,
+            user_name: null,
+            __v: null,
+            _id: null
         },
-        {   _id: "5eb6cef840b7bf34343343434343",
-            user_id: "5eb543f6bea3ad21480f1ee9",
-            name: "Name",
-            path: "/def", // папка
-            cardsCount: 25,
-            grade: 0, // средняя оценка карточек
-            shots: 0,// количество попыток
-            rating: 0, // лайки
-            type: "pack", // ещё будет "folder" (папка)
-            created: "2020-05-09T15:40:40.339Z",
-            updated: "2020-05-09T15:40:40.339Z",
-            __v: 0
-        }
     ],
     cardPacksTotalCount: null,
     maxCardsCount: null,
@@ -41,7 +34,7 @@ const initialState: PacksType = {
 
 export const packsReducer = (state: PacksType = initialState, action: ActionsType): PacksType => {
     switch (action.type) {
-        case GET_PACKS:
+        case SET_PACKS:
             return {
                 ...state,
                 cardPacks:  [...action.value]
@@ -52,10 +45,14 @@ export const packsReducer = (state: PacksType = initialState, action: ActionsTyp
 }
 
 // actions
-export const getPackAC = (value: Array<PackType>) => ({type: GET_PACKS, value} as const)
-
+export const setPacksAC = (value: Array<PackType>) => ({type: SET_PACKS, value} as const)
 
 //thunks
+export const getPacksTC = () => (dispatch: Dispatch) => {
+    dispatch(setAppStatusAC('loading'))
+    PacksAPI.getPacks({pageCount:50})
+        .then(res => dispatch(setPacksAC(res.data.cardPacks)))
+}
 
 
 //types
@@ -67,21 +64,25 @@ export type PacksType = {
     page: number | null
     pageCount: number | null
 }
-type PackType = {
-    _id: string
-    user_id: string
-    name: string
-    path: string // папка
-    cardsCount: number
-    grade: number // средняя оценка карточек
-    shots: number // количество попыток
-    rating: number // лайки
-    type: string // ещё будет "folder" (папка)
-    created: string
-    updated: string
-    __v: number
+export type PackType = {
+    cardsCount: number | null
+    created: Date | null
+    deckCover: string | null
+    grade: number | null
+    more_id: string | null
+    name: string | null
+    path: string | null
+    private: boolean
+    rating: number | null
+    shots: number | null
+    type: string | null
+    updated: Date | null
+    user_id: string | null
+    user_name: string | null
+    __v: number | null
+    _id: string | null
 }
 
-type ActionsType = ReturnType<typeof getPackAC>
+type ActionsType = ReturnType<typeof setPacksAC>
     | SetAppStatusActionType
     | SetAppErrorActionType

@@ -3,8 +3,7 @@ import {Packs} from "./Packs";
 import {useSelector} from "react-redux";
 import {AppRootState} from "../../bll/store";
 import {RequestErrorType, RequestStatusType} from "../../bll/app-reducer";
-import { PacksType } from '../../bll/packs-reducer';
-
+import {PacksType, PackType} from '../../bll/packs-reducer';
 
 export const PacksContainer = () => {
 
@@ -12,12 +11,21 @@ export const PacksContainer = () => {
     const status = useSelector<AppRootState, RequestStatusType>(state => state.app.status)
     const serverError = useSelector<AppRootState, RequestErrorType>(state => state.app.error)
     const packs = useSelector<AppRootState,PacksType>(state => state.packs)
+    const myId = useSelector<AppRootState>(state => state.auth)
 
-    const header = ['Name','user', 'CardCount']
+    const headers =  packs.cardPacks.map((pack) => ({
+            "User Name": pack.user_name,
+            "Name Packs": pack.name,
+            "Cards Count": pack.cardsCount,
+            "Updated": pack.updated,
+            "Created": pack.created,
+            "Id pack": pack._id,
+        }))
+
     return (
             <Packs
-                packs={packs}
-                header={header}
+                cardPacks={headers}
+                headers={headers}
             />
     );
 }

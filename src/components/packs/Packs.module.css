@@ -1,7 +1,8 @@
 .wrap {
     margin-top: -58px;
+    background-image: url(../../assets/image/rhombus-gray.svg);
 }
 
 .btnGroup {
-    display: flex;
+    /*display: flex;*/
 }
