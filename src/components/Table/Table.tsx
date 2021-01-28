@@ -1,9 +1,9 @@
 import React, {FC, ReactNode} from 'react';
 import s from './Table.module.css'
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {AppRootState} from '../../bll/store';
 import {PackType} from '../../bll/searchPacks-reducer';
-import {CardType} from '../../bll/cards-reducer';
+import {addCardTC, CardType} from '../../bll/cards-reducer';
 import SuperButton from '../common/SuperButton/SuperButton';
 
 
@@ -19,6 +19,9 @@ export const Table: FC<TablePropsType> = ({headerElement, renderPacksBody, rende
 	const cards = useSelector<AppRootState, Array<CardType>>(state => state.cards.cards)
 	const cardPacks = useSelector<AppRootState, Array<PackType>>(state => state.search.cardPacks)
 	const error = useSelector<AppRootState, string>(state => state.cards.error)
+	const cardsPackId = useSelector<AppRootState, string>(state => state.cards.cardsPackId)
+	const dispatch = useDispatch()
+	console.log(cardsPackId)
 
 	const renderHeader = (headerElement: Array<string>) => {
 		return headerElement.map((key, index) => {
@@ -26,17 +29,21 @@ export const Table: FC<TablePropsType> = ({headerElement, renderPacksBody, rende
 		})
 	}
 
+	const addNewCardHandler = () => {
+		dispatch(addCardTC(cardsPackId))
+	}
+
 	return (
 		<div className={s.tableBox}>
-			{renderCardsBody && <SuperButton className={s.addBtn}>Add Card</SuperButton>}
-			{isTableCard && <div className={s.errorBox}>{error && <div className={s.error}>{error}</div>}</div>}
+			{renderCardsBody && <SuperButton className={s.addBtn} onClick={addNewCardHandler}>Add Card</SuperButton>}
+			{isTableCard && error && !cardsPackId && <div className={s.errorBox}>{error && <div className={s.error}>{error}</div>}</div>}
 			<table className={s.table}>
 				<thead>
-				<tr>{renderHeader(headerElement)}</tr>
+					<tr>{renderHeader(headerElement)}</tr>
 				</thead>
 				<tbody>
-				{renderPacksBody ? renderPacksBody(cardPacks) : null}
-				{renderCardsBody ? renderCardsBody(cards) : null}
+					{renderPacksBody ? renderPacksBody(cardPacks) : null}
+					{renderCardsBody && cardsPackId ? renderCardsBody(cards) : null}
 				</tbody>
 			</table>
 		</div>

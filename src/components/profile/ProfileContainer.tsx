@@ -10,6 +10,7 @@ export const ProfileContainer = () => {
     const name = useSelector<AppRootState, string>((state) => state.profile.profile.name)
     const isLoggedIn = useSelector<AppRootState, boolean>(state => state.auth.isLoggedIn)
 
+    console.log(name)
 
     if (!isLoggedIn) {
         return <Redirect to={PATH.LOGIN}/>
