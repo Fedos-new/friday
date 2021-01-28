@@ -12,6 +12,9 @@ export const instance = axios.create({
 export const authAPI = {
     login(parameters: LoginParamsType) {
         return instance.post('auth/login', parameters)
+    },
+    logout() {
+        return instance.delete('auth/login')
     }
 }
 
