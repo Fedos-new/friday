@@ -1,11 +1,11 @@
 import {Dispatch} from 'redux';
 import {AppRootState} from './store';
-import { searchPacksAPI} from '../dal/SearchPacks';
+import {searchPacksAPI} from '../dal/SearchPacks';
 import {ThunkAction} from 'redux-thunk';
 import {RequestStatusType} from './newPassword-reducer';
 
 const SET_PACKS = 'SET_PACKS'
-const SET_MY_ID= 'SET_MY_ID'
+// const SET_MY_ID= 'SET_MY_ID'
 const SET_SEARCH_NAME = 'SET_SEARCH_NAME';
 const SET_MIN_MAX_PRICE_RANGE = 'SET_MIN_MAX_PRICE_RANGE';
 const SET_MIN_COUNT_MAX_COUNT = 'SET_MIN_COUNT_MAX_COUNT';
@@ -18,7 +18,7 @@ const SET_ERROR_PACKS_MESSAGE = 'SET_ERROR_PACKS_MESSAGE';
 
 
 type initialStateType = {
-	myId: string | null
+	// myId: string | null
 	cardPacks: Array<PackType>
 	searchName: string
 	min: number
@@ -35,7 +35,7 @@ type initialStateType = {
 }
 
 const initialState: initialStateType = {
-	myId: null,
+	// myId: null,
 	cardPacks: [],
 	searchName: '',
 	min: 0,
@@ -67,7 +67,6 @@ export type PackType = {
 	user_id: string | null
 	user_name: string | null
 	__v: number | null
-	// _id: string | null
 	_id: string
 }
 
@@ -136,12 +135,12 @@ export const searchPacksReducer = (state: initialStateType = initialState, actio
 				error: action.value
 			}
 		}
-		case SET_MY_ID: {
-			return {
-				...state,
-				myId: action.myId
-			}
-		}
+		// case SET_MY_ID: {
+		// 	return {
+		// 		...state,
+		// 		myId: action.myId
+		// 	}
+		// }
 		default:
 			return state
 	}
@@ -150,14 +149,18 @@ export const searchPacksReducer = (state: initialStateType = initialState, actio
 export const setPacksAC = (cardPacks: Array<PackType>) => ({type: SET_PACKS, cardPacks} as const)
 export const setSearchNameAC = (searchName: string) => ({type: SET_SEARCH_NAME, searchName} as const)
 export const setMinMaxPriceRangeAC = (min: number, max: number) => ({type: SET_MIN_MAX_PRICE_RANGE, min, max} as const)
-export const setMinMaxCardsCountAC = (minCardsCount: number, maxCardsCount: number) => ({type: SET_MIN_COUNT_MAX_COUNT, minCardsCount, maxCardsCount} as const)
+export const setMinMaxCardsCountAC = (minCardsCount: number, maxCardsCount: number) => ({
+	type: SET_MIN_COUNT_MAX_COUNT,
+	minCardsCount,
+	maxCardsCount
+} as const)
 export const setSortingAC = (value: string) => ({type: SET_SORTING, value} as const)
 export const setCurrentPageAC = (value: number) => ({type: SET_CURRENT_PAGE, value} as const)
 export const setCountPerPageAC = (value: number) => ({type: SET_COUNT_PER_PAGE, value} as const)
 export const setTotalPacksCountAC = (value: number) => ({type: SET_TOTAL_PACKS_COUNT, value} as const)
 export const setStatusAC = (status: RequestStatusType) => ({type: SET_PACKS_STATUS, status} as const)
 export const setErrorAC = (value: string) => ({type: SET_ERROR_PACKS_MESSAGE, value} as const)
-export const setMyIdAC = (myId: string | null) => ({type: SET_MY_ID, myId} as const)
+// export const setMyIdAC = (myId: string | null) => ({type: SET_MY_ID, myId} as const)
 
 
 type ActionsType =
@@ -171,7 +174,7 @@ type ActionsType =
 	| ReturnType<typeof setPacksAC>
 	| ReturnType<typeof setStatusAC>
 	| ReturnType<typeof setErrorAC>
-	| ReturnType<typeof setMyIdAC>
+// | ReturnType<typeof setMyIdAC>
 
 export type ThunkType = ThunkAction<void, AppRootState, Dispatch<ActionsType>, ActionsType>
 
@@ -186,7 +189,9 @@ export const getPacksTC = (): ThunkType => {
 		const sortPacks = state.search.sortPacks
 		const currentPage = state.search.page
 		const packsOnPage = state.search.packsPerPage
-		const myId = state.search.myId
+		const myId = state.profile.myId
+
+		console.log(myId)
 
 		// dispatch(setStatusAC('loading'))
 		searchPacksAPI.getPacksData(searchName, min, max, sortPacks, currentPage, packsOnPage, myId)
@@ -197,7 +202,7 @@ export const getPacksTC = (): ThunkType => {
 				dispatch(setTotalPacksCountAC(response.cardPacksTotalCount))
 				// dispatch(setMinMaxPriceRangeAC(response.minCardsCount, response.maxCardsCount))
 				// dispatch(setMinMaxCardsCountAC(response.minCardsCount, response.maxCardsCount))
-				if(!response.cardPacks.length) {
+				if (!response.cardPacks.length) {
 					dispatch(setErrorAC('Something went wrong.. Please, try again.'))
 				}
 			})
@@ -215,9 +220,8 @@ export const getPacksTC = (): ThunkType => {
 }
 
 
-
-export const deletePackTC = (idPack: string | null): ThunkType  => (dispatch) => {
-	dispatch(setStatusAC('loading'))
+export const deletePackTC = (idPack: string | null): ThunkType => (dispatch) => {
+	// dispatch(setStatusAC('loading'))
 	searchPacksAPI.deletePack(idPack)
 		.then(response => {
 			console.log(response.data)
@@ -228,6 +232,59 @@ export const deletePackTC = (idPack: string | null): ThunkType  => (dispatch) =>
 				? err.response.data.error
 				: (err.message + ', more details in the console');
 			console.log(error)
+			dispatch(setErrorAC(error))
+		})
+		.finally(() => {
+			dispatch(setStatusAC('succeeded'))
+		})
+}
+
+export const addPackTC = (name: string): ThunkType => (dispatch, getState) => {
+	// dispatch(setStatusAC('loading'))
+
+	const newCard = {
+		// name: 'name',
+		name: name,
+		// path: 'string',
+		// grade: 0,
+		// shots: 0,
+		// rating: 0,
+		// deckCover: 'string',
+		// private: false,
+		// type: 'string'
+	}
+	searchPacksAPI.addNewPack(newCard)
+		.then(response => {
+			console.log(response.data)
+			dispatch(getPacksTC())
+		})
+		.catch((err) => {
+			const error = err.response
+				? err.response.data.error
+				: (err.message + ', more details in the console');
+			console.log(error)
+			dispatch(setErrorAC(error))
+		})
+		.finally(() => {
+			dispatch(setStatusAC('succeeded'))
+		})
+}
+
+export const updatePackTС = (packId: string): ThunkType => (dispatch, getState) => {
+	const newPack = {
+		_id: packId,
+		name: 'Pack was updated'
+	}
+	searchPacksAPI.updatePack(newPack)
+		.then(res => {
+			dispatch(getPacksTC())
+			console.log(res)
+		})
+		.catch(err => {
+			console.log(err)
+			const error = err.response
+				? err.response.data.error
+				: (err.message + ', more details in the console');
 			dispatch(setErrorAC(error))
 		})
 		.finally(() => {

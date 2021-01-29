@@ -41,7 +41,7 @@ const initialState: initialStateType = {
 			created: null,
 			updated: null,
 			__v: null,
-			_id: "",
+			_id: '',
 		}
 	],
 	cardsPackId: '',
@@ -87,7 +87,7 @@ type ActionsType =
 export type ThunkType = ThunkAction<void, AppRootState, Dispatch<ActionsType>, ActionsType>
 
 
-export const getCardsTC = (): ThunkType =>  (dispatch, getState) => {
+export const getCardsTC = (): ThunkType => (dispatch, getState) => {
 	const state = getState()
 	const cardsPack_id = state.cards.cardsPackId
 
@@ -96,6 +96,57 @@ export const getCardsTC = (): ThunkType =>  (dispatch, getState) => {
 			console.log(res.cards)
 			dispatch(setCardsPackIdAC(cardsPack_id))
 			dispatch(setCardsPackAC(res.cards))
+		})
+		.catch(err => {
+			const error = err.response
+				? err.response.data.error
+				: (err.message + ', more details in the console');
+			// dispatch(setCardsErrorAC(error))
+			dispatch(setCardsErrorAC('Please, choose a pack on the Packs page'))
+		})
+}
+
+export const addCardTC = (cardsPack_id: string, question?: string, answer?: string): ThunkType => (dispatch, getState) => {
+	const newCard = {
+		cardsPack_id: cardsPack_id,
+		question: question,
+		answer: answer
+	}
+	cardsAPI.addNewCard(newCard)
+		.then(() => {
+			dispatch(getCardsTC())
+		})
+		.catch(err => {
+			const error = err.response
+				? err.response.data.error
+				: (err.message + ', more details in the console');
+			dispatch(setCardsErrorAC(error))
+		})
+}
+
+export const updateCardTC = (cardId: string): ThunkType => (dispatch, getState) => {
+	const updateCard = {
+		_id: cardId,
+		question: 'Question was updated'
+	}
+	cardsAPI.updateCard(updateCard)
+		.then(res => {
+			dispatch(getCardsTC())
+		})
+		.catch(err => {
+			const error = err.response
+				? err.response.data.error
+				: (err.message + ', more details in the console');
+			dispatch(setCardsErrorAC(error))
+		})
+}
+
+
+export const deleteCardTC = (cardsPack_id: string): ThunkType => (dispatch, getState) => {
+
+	cardsAPI.deleteCard(cardsPack_id)
+		.then((res) => {
+			dispatch(getCardsTC())
 		})
 		.catch(err => {
 			const error = err.response

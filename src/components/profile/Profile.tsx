@@ -1,6 +1,8 @@
 import React from 'react';
 import style from './Profile.module.css'
 import SuperButton from "../common/SuperButton/SuperButton";
+import {PATH} from "../Routes";
+import {NavLink} from "react-router-dom";
 
 
 type ProfileType = {
@@ -21,7 +23,7 @@ export const Profile = (props: ProfileType) => {
                 <div className={style.content}>
                 <img src="some avatar" alt="avatar" height="200px"/>
                 <div> Name: {name}</div>
-                <div> Public card packs count: {cardPacksCount}</div>
+                <div>  <NavLink className={style.link} to={PATH.PACKS}>Public card packs count: {cardPacksCount}</NavLink></div>
                     <SuperButton onClick={logout}>Logout</SuperButton>
                 </div>
             </div>

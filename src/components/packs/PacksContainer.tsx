@@ -3,14 +3,15 @@ import {Packs} from './Packs';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppRootState} from '../../bll/store';
 import {
+	addPackTC,
 	deletePackTC,
 	getPacksTC,
 	PackType,
 	setCurrentPageAC,
-	setMinMaxPriceRangeAC
+	setMinMaxPriceRangeAC, updatePackTС
 } from '../../bll/searchPacks-reducer';
 import {RequestStatusType} from '../../bll/app-reducer';
-import {NavLink} from 'react-router-dom';
+import {NavLink, Redirect} from 'react-router-dom';
 import {PATH} from '../Routes';
 import s from '../Table/Table.module.css';
 import SuperButton from '../common/SuperButton/SuperButton';
@@ -31,6 +32,7 @@ export const PacksContainer = () => {
 	const maxPrice = useSelector<AppRootState, number>(state => state.search.max)
 	const valueArray = [minPrice, maxPrice]
 	const headerElementPacks = ['USERNAME', 'NAME', 'CARDSCOUNT',  'UPDATED', 'CARDS', 'OPERATIONS']
+	const isLoggedIn = useSelector<AppRootState, boolean>(state => state.auth.isLoggedIn)
 
 	const onChangeRange = (value: number | [number, number]) => {
 		if (Array.isArray(value)) {
@@ -41,21 +43,19 @@ export const PacksContainer = () => {
 	const handlePageChange = (pageNumber: number) => {
 		dispatch(setCurrentPageAC(pageNumber))
 		dispatch(getPacksTC())
-
 	}
 
-	const onClickLinkHandler = (id: string) => {
-		dispatch(setCardsPackIdAC(id))
-	}
-	const removePack = (_id: string | null) => {
-		console.log('delete', _id)
-		dispatch(deletePackTC(_id))
-	}
+	const onClickLinkHandler = (packId: string) => dispatch(setCardsPackIdAC(packId))
 
-	const updatePack = () => {
-		console.log('updateData',)
-	}
+	const removePack = (packId: string | null) => dispatch(deletePackTC(packId))
 
+	const updatePack = (packId: string) => dispatch(updatePackTС(packId))
+
+	const addPack = (name: string) => dispatch(addPackTC(name))
+
+	if (!isLoggedIn) {
+		return <Redirect to={PATH.LOGIN}/>
+	}
 
 	const renderPacksBody = (cardPacks: Array<PackType>) => {
 		return cardPacks && cardPacks.map(({ _id, name, cardsCount,user_name, updated }) => {
@@ -69,7 +69,7 @@ export const PacksContainer = () => {
 						<NavLink to={PATH.CARDS} className={s.cardLink} onClick={() => {onClickLinkHandler(_id)}}>Cards</NavLink>
 					</td>
 					<td className={s.operation}>
-						<SuperButton onClick={() => updatePack()} className={s.updBtn}>Update</SuperButton>
+						<SuperButton onClick={() => updatePack(_id)} className={s.updBtn}>Update</SuperButton>
 						<SuperButton onClick={() => removePack(_id)} className={s.delBtn}>Delete</SuperButton>
 					</td>
 				</tr>
@@ -90,6 +90,8 @@ export const PacksContainer = () => {
 						 onChangeRange={onChangeRange}
 						 renderPacksBody={renderPacksBody}
 						 headerElementPacks={headerElementPacks}
+						 addPack={addPack}
+						 isLoggedIn={isLoggedIn}
 			/>
 		</div>
 	)

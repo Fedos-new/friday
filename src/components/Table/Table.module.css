@@ -1,12 +1,15 @@
 .tableBox {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	margin: 0 auto;
 }
 
 
 .table {
 	border-collapse: collapse;
 	border: 3px solid #ddd;
+	min-width: 900px;
 }
 
 .table td,

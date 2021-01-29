@@ -8,12 +8,13 @@ import {setIsLoggedInAC} from "../../bll/login-reducer";
 
 
 export const ProfileContainer = () => {
-    const name = useSelector<AppRootState, string>((state) => state.profile.profileInfo.name)
-    const avatar = useSelector<AppRootState, string>((state) => state.profile.profileInfo.avatar)
-    const cardPacksCount = useSelector<AppRootState, number>((state) => state.profile.profileInfo.publicCardPacksCount)
+    const name = useSelector<AppRootState, string>((state) => state.profile.profile.name)
+    const avatar = useSelector<AppRootState, string>((state) => state.profile.profile.avatar)
+    const cardPacksCount = useSelector<AppRootState, number>((state) => state.profile.profile.publicCardPacksCount)
     const isLoggedIn = useSelector<AppRootState, boolean>(state => state.auth.isLoggedIn)
     const dispatch = useDispatch()
 
+    console.log(name)
 
     const logout = () => {
         dispatch(setIsLoggedInAC(false))

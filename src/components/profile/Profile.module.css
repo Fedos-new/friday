@@ -4,5 +4,14 @@
     display: flex;
     justify-content: center;
 }
-.content{
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: #282c34;
+    font-weight: 600;
 }
