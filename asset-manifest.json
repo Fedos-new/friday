@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/friday/static/css/main.aaa3f483.chunk.css",
-    "main.js": "/friday/static/js/main.f0322b47.chunk.js",
-    "main.js.map": "/friday/static/js/main.f0322b47.chunk.js.map",
+    "main.css": "/friday/static/css/main.c3064ed0.chunk.css",
+    "main.js": "/friday/static/js/main.ecafc653.chunk.js",
+    "main.js.map": "/friday/static/js/main.ecafc653.chunk.js.map",
     "runtime-main.js": "/friday/static/js/runtime-main.9c3646cc.js",
     "runtime-main.js.map": "/friday/static/js/runtime-main.9c3646cc.js.map",
-    "static/js/2.a263bdf9.chunk.js": "/friday/static/js/2.a263bdf9.chunk.js",
-    "static/js/2.a263bdf9.chunk.js.map": "/friday/static/js/2.a263bdf9.chunk.js.map",
+    "static/js/2.a9325947.chunk.js": "/friday/static/js/2.a9325947.chunk.js",
+    "static/js/2.a9325947.chunk.js.map": "/friday/static/js/2.a9325947.chunk.js.map",
     "static/js/3.776c4655.chunk.js": "/friday/static/js/3.776c4655.chunk.js",
     "static/js/3.776c4655.chunk.js.map": "/friday/static/js/3.776c4655.chunk.js.map",
     "index.html": "/friday/index.html",
-    "static/css/main.aaa3f483.chunk.css.map": "/friday/static/css/main.aaa3f483.chunk.css.map",
-    "static/js/2.a263bdf9.chunk.js.LICENSE.txt": "/friday/static/js/2.a263bdf9.chunk.js.LICENSE.txt",
+    "static/css/main.c3064ed0.chunk.css.map": "/friday/static/css/main.c3064ed0.chunk.css.map",
+    "static/js/2.a9325947.chunk.js.LICENSE.txt": "/friday/static/js/2.a9325947.chunk.js.LICENSE.txt",
     "static/media/down-arrow.9a3add57.svg": "/friday/static/media/down-arrow.9a3add57.svg",
     "static/media/preloader.b78a56d2.svg": "/friday/static/media/preloader.b78a56d2.svg",
     "static/media/up-arrow.7bcbc04e.svg": "/friday/static/media/up-arrow.7bcbc04e.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.9c3646cc.js",
-    "static/js/2.a263bdf9.chunk.js",
-    "static/css/main.aaa3f483.chunk.css",
-    "static/js/main.f0322b47.chunk.js"
+    "static/js/2.a9325947.chunk.js",
+    "static/css/main.c3064ed0.chunk.css",
+    "static/js/main.ecafc653.chunk.js"
   ]
 }
