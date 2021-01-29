@@ -1,21 +1,19 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { logoutTC } from '../../../bll/login-reducer'
+import {useDispatch} from 'react-redux'
+import {logoutTC} from '../../../bll/login-reducer'
 import s from './Logout.module.css'
+import SuperButton from "../SuperButton/SuperButton";
 
-   
 
 const Logout = () => {
-
-     const dispatch = useDispatch()
-
+    const dispatch = useDispatch()
     const logout = () => {
         dispatch(logoutTC())
     }
 
     return (
         <div>
-            <button onClick={logout} className={s.btn}>Logout</button>
+            <SuperButton onClick={logout} className={s.logoutBtn}>Logout</SuperButton>
         </div>
     )
 }

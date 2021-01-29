@@ -14,7 +14,7 @@ export const authAPI = {
         return instance.post('auth/login', parameters)
     },
     logout() {
-        return instance.delete('auth/login')
+        return instance.delete('auth/me')
     }
 }
 

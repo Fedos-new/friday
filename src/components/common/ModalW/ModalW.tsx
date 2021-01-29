@@ -1,8 +1,8 @@
-import React, { ChangeEvent, useState } from 'react'
+import React, {ChangeEvent, useState} from 'react'
 import s from './ModalW.module.css'
 
 type PropsType = {
-    activate:boolean
+    activate: boolean
 }
 
 const ModalW = (props: PropsType) => {
@@ -18,24 +18,24 @@ const ModalW = (props: PropsType) => {
         alert(`Вы ввели ${input}`)
     }
 
-    const changeInput = (e:ChangeEvent<HTMLInputElement>) => {
+    const changeInput = (e: ChangeEvent<HTMLInputElement>) => {
         setInput(e.currentTarget.value)
     }
 
     return (
         <>
-        {modal && <div className={s.wrapper}>
-            <div className={s.modal}>
-                <div className={s.closeBtnWrapper}>
-                    <button onClick={deactivateModal} className={s.btn}>close</button>
+            {modal && <div className={s.wrapper}>
+                <div className={s.modal}>
+                    <div className={s.closeBtnWrapper}>
+                        <button onClick={deactivateModal} className={s.btnClose}>close</button>
+                    </div>
+                    <div className={s.title}>Введите название карточки</div>
+                    <div className={s.formWrapper}>
+                        <input onChange={changeInput} className={s.input}/>
+                        <button onClick={someFunc} className={s.btnForm}>Отправить</button>
+                    </div>
                 </div>
-                <div className={s.title}>Введите название карточки</div>
-                <div className={s.formWrapper}>
-                    <input onChange={changeInput} className={s.input} />
-                    <button onClick={someFunc} className={s.btnForm}>Отправить</button>
-                </div>    
-            </div>
-        </div>}
+            </div>}
         </>
     )
 }

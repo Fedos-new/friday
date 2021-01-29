@@ -7,7 +7,7 @@
     padding: 10px 15px 10px 16px;
     border-radius: 30px;
     transition: 0.3s;
-    outline: none;
+    outline: none !important;
     margin: 5px 5px 5px 5px;
 }
 

@@ -1,10 +1,9 @@
 import React from 'react';
 import {Profile} from "./Profile";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {AppRootState} from "../../bll/store";
 import {PATH} from "../Routes";
 import {Redirect} from 'react-router-dom';
-import {setIsLoggedInAC} from "../../bll/login-reducer";
 
 
 export const ProfileContainer = () => {
@@ -12,13 +11,7 @@ export const ProfileContainer = () => {
     const avatar = useSelector<AppRootState, string>((state) => state.profile.profile.avatar)
     const cardPacksCount = useSelector<AppRootState, number>((state) => state.profile.profile.publicCardPacksCount)
     const isLoggedIn = useSelector<AppRootState, boolean>(state => state.auth.isLoggedIn)
-    const dispatch = useDispatch()
 
-    console.log(name)
-
-    const logout = () => {
-        dispatch(setIsLoggedInAC(false))
-    }
 
     if (!isLoggedIn) {
         return <Redirect to={PATH.LOGIN}/>
@@ -26,14 +19,10 @@ export const ProfileContainer = () => {
     return (
 
         <div>
-            <Profile  name={name}
-                      cardPacksCount={cardPacksCount}
-                      avatar={avatar}
-                      logout={logout}
-
+            <Profile name={name}
+                     cardPacksCount={cardPacksCount}
+                     avatar={avatar}
             />
-
-
         </div>
     );
 }
