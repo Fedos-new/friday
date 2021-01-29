@@ -29,6 +29,19 @@ export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<ActionsTyp
     dispatch(setAppStatusAC('loading'))
     authAPI.login(data)
         .then(res => {
+            dispatch(setIsLoggedInAC(false))
+            dispatch(setAppStatusAC('succeeded'))
+        })
+        .catch(rej => {
+            dispatch(setAppErrorAC(rej.response.data.error))
+            dispatch(setAppStatusAC('succeeded'))
+        })
+}
+
+export const logoutTC = () => (dispatch: Dispatch<ActionsType>) => {
+    dispatch(setAppStatusAC('loading'))
+    authAPI.logout()
+        .then(res => {
             dispatch(setIsLoggedInAC(true))
             dispatch(setAppStatusAC('succeeded'))
         })

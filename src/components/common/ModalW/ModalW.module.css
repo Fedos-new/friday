@@ -1,0 +1,62 @@
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(40, 44, 52, 0.8);
+  z-index: 1000;
+}
+
+.modal {
+  width: 60vw;
+  height: auto;
+  background: white;
+  border-radius: 10px;
+  border: 5px solid #f8192b;
+  padding: 10px 20px 20px 20px;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0;
+  padding: 0;
+}
+
+.closeBtnWrapper {
+  text-align: right;
+}
+
+.btn {
+  border: none;
+  color: red;
+  text-decoration: underline;
+  background: none;
+  margin: 0;
+  padding: 0;
+}
+
+.formWrapper {
+  padding-top: 25px;
+}
+
+.input {
+  width: 60%;
+  padding: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.btnForm {
+  background: #21252b;
+  border: none;
+  padding: 7px 30px;
+  color: white;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
