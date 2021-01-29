@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './Modal.module.css'
 import SuperButton from "../SuperButton/SuperButton";
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { AppRootState } from '../../bll/store';
 import {ProductType} from '../../bll/profile-reducer'
-
+import ModalW from '../common/ModalW/ModalW';
 
 export const Profile = () => {
 
@@ -23,12 +23,12 @@ export const Profile = () => {
 
   return (
     <div className="container">
-
+        <ModalW activate={true} />
       <div className="row">
           <div className="col">
          <div className="input-group mb-3">
-          <input type="text" className="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" />
-          <button className="btn btn-dark" type="button" id="button-addon2">Button</button>
+          <input type="text" className="form-control" placeholder="Поиск по сайту" aria-label="Recipient's username" aria-describedby="button-addon2" />
+          <button className="btn btn-dark" type="button" id="button-addon2">Искать</button>
         </div>           
           </div>
           <div className="col text-end">
@@ -79,6 +79,8 @@ export const Profile = () => {
             <li className="page-item"><a className="page-link bg-dark text-light" href="#">Next</a></li>
           </ul>
         </nav>
+
+
 
     </div>
   );
