@@ -6,7 +6,7 @@ import SuperButton from "../SuperButton/SuperButton";
 type ModalType = {
     activeModal: boolean
     setActiveModal: (activeModal: boolean) => void
-    children: any
+    children?: any
 }
 
 

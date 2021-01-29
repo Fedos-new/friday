@@ -1,4 +1,4 @@
-import React, {FC, ReactNode, useEffect} from 'react';
+import React, {FC, ReactNode, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getPacksTC, PackType} from '../../bll/searchPacks-reducer';
 import Search from '../common/Search/Search';
@@ -11,6 +11,7 @@ import {Table} from '../Table/Table';
 import SuperButton from '../common/SuperButton/SuperButton';
 import {AppRootState} from '../../bll/store';
 import {setMyIdAC} from '../../bll/profile-reducer';
+import {ModalBase} from '../common/ModalBase/ModalBase';
 
 type PacksType = {
 	cardPacks: Array<PackType>
@@ -43,6 +44,8 @@ export const Packs: FC<PacksType> = (
 ) => {
 	const dispatch = useDispatch()
 	const myID = useSelector<AppRootState, string | null>(state => state.profile.profile._id)
+	let [mode, setMode] = useState<boolean>(false)
+	let [input, setInput] = useState<string>('')
 
 	useEffect(() => {
 		if (!isLoggedIn) return
@@ -60,15 +63,24 @@ export const Packs: FC<PacksType> = (
 		dispatch(getPacksTC())
 	}
 
-	// const addPackHandler = (name: string) => {
-	const addPackHandler = () => {
-		addPack('Add new pack')
+	const closeModal = () => {
+		setMode(false)
+		setInput('')
+	}
+	const openModalHandler = () => setMode(true)
+	const onChangeText = (value: string) => {
+		setInput(value)
+	}
+
+	const onClickAddPackHandler = () => {
+		addPack(input)
+		setInput('')
+		closeModal()
 	}
 
 	if (status === 'loading') {
 		return <Loader/>
 	}
-
 
 	return (
 		<div className={s.packsBox}>
@@ -84,9 +96,13 @@ export const Packs: FC<PacksType> = (
 													 valueArray={valueArray} onChangeRange={onChangeRange}/>
 				<SuperButton onClick={getMyPacks} className={s.myPacks}>My packs</SuperButton>
 				<SuperButton onClick={getAllPacks} className={s.myPacks}>All packs</SuperButton>
-				<SuperButton onClick={addPackHandler} className={s.myPacks}>Add pack</SuperButton>
+				<SuperButton onClick={openModalHandler} className={s.myPacks}>Add pack</SuperButton>
 
-				<Table headerElement={headerElementPacks} renderPacksBody={renderPacksBody} />
+				<ModalBase mode={mode} closeModal={closeModal} input={input} onChangeText={onChangeText}
+									 addTextHandler={onClickAddPackHandler} title='Please, enter the name of the pack'/>
+
+
+				<Table headerElement={headerElementPacks} renderPacksBody={renderPacksBody}/>
 
 			</div>
 

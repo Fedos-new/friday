@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {CardType, deleteCardTC, getCardsTC, updateCardTC} from '../../bll/cards-reducer';
+import {addCardTC, CardType, deleteCardTC, getCardsTC, updateCardTC} from '../../bll/cards-reducer';
 import {Table} from '../Table/Table';
 import s from '../Table/Table.module.css';
 import SuperButton from '../common/SuperButton/SuperButton';
@@ -10,6 +10,7 @@ import {PATH} from '../Routes';
 
 export const Cards = () => {
 	const dispatch = useDispatch()
+	const cardsPackId = useSelector<AppRootState, string>(state => state.cards.cardsPackId)
 	const isLoggedIn = useSelector<AppRootState, boolean>(state => state.auth.isLoggedIn)
 
 	useEffect(() => {
@@ -45,9 +46,13 @@ export const Cards = () => {
 			)
 		})
 	}
+	const addNewCardHandler = () => {
+		dispatch(addCardTC(cardsPackId))
+	}
 
 	return (
 		<div className={s.cardTableBox}>
+			<SuperButton className={s.addBtn} onClick={addNewCardHandler}>Add Card</SuperButton>
 			<Table headerElement={headerElement} renderCardsBody={renderCardsBody} isTableCard={true}/>
 		</div>
 	)

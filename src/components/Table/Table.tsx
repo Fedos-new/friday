@@ -19,7 +19,6 @@ export const Table: FC<TablePropsType> = ({headerElement, renderPacksBody, rende
 	const cardPacks = useSelector<AppRootState, Array<PackType>>(state => state.search.cardPacks)
 	const error = useSelector<AppRootState, string>(state => state.cards.error)
 	const cardsPackId = useSelector<AppRootState, string>(state => state.cards.cardsPackId)
-	const dispatch = useDispatch()
 
 
 	const renderHeader = (headerElement: Array<string>) => {
@@ -28,13 +27,9 @@ export const Table: FC<TablePropsType> = ({headerElement, renderPacksBody, rende
 		})
 	}
 
-	const addNewCardHandler = () => {
-		dispatch(addCardTC(cardsPackId))
-	}
 
 	return (
 		<div className={s.tableBox}>
-			{renderCardsBody && <SuperButton className={s.addBtn} onClick={addNewCardHandler}>Add Card</SuperButton>}
 			{isTableCard && error && !cardsPackId &&
       <div className={s.errorBox}>{error && <div className={s.error}>{error}</div>}</div>}
 			<table className={s.table}>

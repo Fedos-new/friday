@@ -1,5 +1,7 @@
 import React, {ChangeEvent, useState} from 'react'
 import s from './ModalW.module.css'
+import SuperButton from '../SuperButton/SuperButton';
+import SuperInputText from '../SuperInputText/SuperInputText';
 
 type PropsType = {
     activate: boolean
@@ -27,12 +29,12 @@ const ModalW = (props: PropsType) => {
             {modal && <div className={s.wrapper}>
                 <div className={s.modal}>
                     <div className={s.closeBtnWrapper}>
-                        <button onClick={deactivateModal} className={s.btnClose}>close</button>
+                        <SuperButton onClick={deactivateModal} className={s.btnClose}>close</SuperButton>
                     </div>
                     <div className={s.title}>Введите название карточки</div>
                     <div className={s.formWrapper}>
-                        <input onChange={changeInput} className={s.input}/>
-                        <button onClick={someFunc} className={s.btnForm}>Отправить</button>
+                        <SuperInputText onChange={changeInput} className={s.input}/>
+                        <SuperButton onClick={someFunc} className={s.btnForm}>Отправить</SuperButton>
                     </div>
                 </div>
             </div>}
