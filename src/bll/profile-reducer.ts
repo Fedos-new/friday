@@ -6,7 +6,7 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 
 const initialState: ProfileInitialStateType = {
-    profile: {
+    profileInfo: {
         name: '',
         _id: '',
         avatar: '',
@@ -24,7 +24,7 @@ const initialState: ProfileInitialStateType = {
 export const profileReducer = (state: ProfileInitialStateType = initialState, action: ActionsType): ProfileInitialStateType => {
     switch (action.type) {
         case SET_USER_PROFILE:
-            return {...state, profile: action.payload}
+            return {...state, profileInfo: action.payload}
         default:
             return state
     }
@@ -42,7 +42,7 @@ export const setProfileTC = () => (dispatch: Dispatch<ActionsType>) => {
     return profileAPI.getProfile()
         .then(res => {
                 dispatch(setUserProfileAC(res.data))
-            dispatch(setIsLoggedInAC(true))
+                dispatch(setIsLoggedInAC(true))
             }
         )
         .catch(rej => {
@@ -66,7 +66,8 @@ export type ProfileType = {
 }
 
 export type ProfileInitialStateType = {
-    profile: ProfileType
+
+    profileInfo: ProfileType
 }
 
 type ActionsType = any
