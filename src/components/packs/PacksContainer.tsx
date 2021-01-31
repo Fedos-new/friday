@@ -38,6 +38,7 @@ export const PacksContainer = () => {
 	const isLoggedIn = useSelector<AppRootState, boolean>(state => state.auth.isLoggedIn)
 	const [value, setValue] = useState<string>('')
 	const history = useHistory()
+
 	const onChangeTextUpdateHandler = (value: string) => { setValue(value)}
 
 	const onChangeRange = (value: number | [number, number]) => {

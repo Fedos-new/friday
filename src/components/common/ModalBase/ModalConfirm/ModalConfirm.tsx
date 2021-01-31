@@ -15,10 +15,15 @@ export const ModalConfirm: FC<PropsType> = ({
 																							title
 																						}) => {
 
-	const  params = useParams<{ packId: string }>()
+	const params = useParams<{ packId: string }>()
+	const paramsCard = useParams<{ cardId: string }>()
 
-	const successHandler= () => {
-		confirmHandler(params.packId)
+	const successHandler = () => {
+		if (params.packId) {
+			confirmHandler(params.packId)
+		} else if (paramsCard.cardId) {
+			confirmHandler(paramsCard.cardId)
+		}
 	}
 
 

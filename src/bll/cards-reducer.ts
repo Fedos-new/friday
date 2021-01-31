@@ -124,10 +124,11 @@ export const addCardTC = (cardsPack_id: string, question?: string, answer?: stri
 		})
 }
 
-export const updateCardTC = (cardId: string): ThunkType => (dispatch, getState) => {
+export const updateCardTC = (cardId: string, value: string, value2: string): ThunkType => (dispatch, getState) => {
 	const updateCard = {
 		_id: cardId,
-		question: 'Question was updated'
+		question: value,
+		answer: value2
 	}
 	cardsAPI.updateCard(updateCard)
 		.then(res => {

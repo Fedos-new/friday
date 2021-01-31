@@ -4,8 +4,6 @@ import {useSelector} from 'react-redux';
 import {AppRootState} from '../../bll/store';
 import {PackType} from '../../bll/searchPacks-reducer';
 import {CardType} from '../../bll/cards-reducer';
-import {ModalConfirm} from '../common/ModalBase/ModalConfirm/ModalConfirm';
-import {ModalBase} from '../common/ModalBase/ModalBase';
 
 
 type TablePropsType = {
@@ -45,13 +43,3 @@ export const Table: FC<TablePropsType> = ({headerElement, renderPacksBody, rende
 		</div>
 	)
 }
-
-{/*<ModalConfirm mode={mode} closeModal={closeModal} confirmHandler={() => {*/}
-{/*	confirmRemovePack(_id)*/}
-{/*}} cancelHandler={closeModal} title='Are you sure you want to delete this pack?'/>*/}
-
-{/*<ModalBase mode={updateMode} closeModal={closeUpdateModal} input={value}*/}
-{/*					 onChangeText={onChangeTextUpdateHandler}*/}
-{/*					 addTextHandler={() => {*/}
-{/*						 updatePack(_id, value)*/}
-{/*					 }} title='Please, update name of pack'/>*/}

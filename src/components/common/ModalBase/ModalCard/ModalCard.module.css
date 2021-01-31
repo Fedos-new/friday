@@ -1,0 +1,71 @@
+.wrapper {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(40, 44, 52, 0.8);
+	z-index: 1000;
+}
+
+.modal {
+	max-width: 22vw;
+	min-width: 320px;
+	height: auto;
+	background: white;
+	border-radius: 10px;
+	border: 5px solid #4c84e0;
+	padding: 20px
+}
+
+.title {
+	text-transform: uppercase;
+	font-size: 20px;
+	font-weight: 800;
+	margin: 0;
+}
+
+.closeBtnWrapper {
+	text-align: right;
+	padding-bottom: 10px;
+}
+
+.btnClose {
+	border: none;
+	color: red;
+	background: none;
+	margin: 0;
+	padding: 0;
+	outline: none;
+}
+
+.formWrapper {
+	display: flex;
+	flex-direction: column;
+	padding-top: 25px;
+}
+
+.input {
+	width: 60%;
+	padding: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.btnForm {
+	background: #21252b;
+	border: none;
+	padding: 7px 30px;
+	color: white;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	outline: none;
+	margin: 0 auto;
+}
+
+.sendBtn {
+	margin: 0 auto;
+}

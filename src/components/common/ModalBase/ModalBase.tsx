@@ -22,6 +22,7 @@ export const ModalBase: FC<PropsType> = ({
 																					 title
 																				 }) => {
 	const params = useParams<{ packId: string }>()
+	const paramsCard = useParams<{ cardId: string }>()
 
 	const onChangeCallback = (event: ChangeEvent<HTMLInputElement>) => {
 		onChangeText(event.currentTarget.value)
@@ -29,7 +30,11 @@ export const ModalBase: FC<PropsType> = ({
 
 
 	const successHandler= () => {
-		addTextHandler(params.packId, input)
+		if (params.packId) {
+			addTextHandler(params.packId, input)
+		} else if (paramsCard.cardId) {
+			addTextHandler(paramsCard.cardId, input)
+		}
 	}
 
 

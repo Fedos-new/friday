@@ -12,7 +12,7 @@ import SuperButton from '../common/SuperButton/SuperButton';
 import {AppRootState} from '../../bll/store';
 import {setMyIdAC} from '../../bll/profile-reducer';
 import {ModalBase} from '../common/ModalBase/ModalBase';
-import {NavLink, Route, useHistory, useParams} from 'react-router-dom';
+import {NavLink, Route, useHistory} from 'react-router-dom';
 import {PATH} from '../Routes';
 
 type PacksType = {
@@ -50,7 +50,6 @@ export const Packs: FC<PacksType> = (
 	const myID = useSelector<AppRootState, string | null>(state => state.profile.profile._id)
 	let [input, setInput] = useState<string>('')
 	let [isTouched, setTouched] = useState<boolean>(false)
-	const params = useParams<{ packId: string }>()
 	const history = useHistory()
 
 	useEffect(() => {
