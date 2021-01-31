@@ -5,6 +5,7 @@ import {ThunkAction} from 'redux-thunk';
 import {RequestStatusType} from './newPassword-reducer';
 
 const SET_PACKS = 'SET_PACKS'
+const SET_DISABLED = 'SET_DISABLED'
 // const SET_MY_ID= 'SET_MY_ID'
 const SET_SEARCH_NAME = 'SET_SEARCH_NAME';
 const SET_MIN_MAX_PRICE_RANGE = 'SET_MIN_MAX_PRICE_RANGE';
@@ -32,6 +33,7 @@ type initialStateType = {
 	maxCardsCount: number
 	error: string
 	status: RequestStatusType
+	disabled: boolean
 }
 
 const initialState: initialStateType = {
@@ -48,7 +50,8 @@ const initialState: initialStateType = {
 	minCardsCount: 0,
 	maxCardsCount: 24,
 	error: '',
-	status: 'idle'
+	status: 'idle',
+	disabled: false
 }
 
 export type PackType = {
@@ -135,6 +138,12 @@ export const searchPacksReducer = (state: initialStateType = initialState, actio
 				error: action.value
 			}
 		}
+		case SET_DISABLED: {
+			return {
+				...state,
+				disabled: action.value
+			}
+		}
 		// case SET_MY_ID: {
 		// 	return {
 		// 		...state,
@@ -160,6 +169,7 @@ export const setCountPerPageAC = (value: number) => ({type: SET_COUNT_PER_PAGE, 
 export const setTotalPacksCountAC = (value: number) => ({type: SET_TOTAL_PACKS_COUNT, value} as const)
 export const setStatusAC = (status: RequestStatusType) => ({type: SET_PACKS_STATUS, status} as const)
 export const setErrorAC = (value: string) => ({type: SET_ERROR_PACKS_MESSAGE, value} as const)
+export const setDisabledAC = (value: boolean) => ({type: SET_DISABLED, value} as const)
 // export const setMyIdAC = (myId: string | null) => ({type: SET_MY_ID, myId} as const)
 
 
@@ -174,6 +184,7 @@ type ActionsType =
 	| ReturnType<typeof setPacksAC>
 	| ReturnType<typeof setStatusAC>
 	| ReturnType<typeof setErrorAC>
+	| ReturnType<typeof setDisabledAC>
 // | ReturnType<typeof setMyIdAC>
 
 export type ThunkType = ThunkAction<void, AppRootState, Dispatch<ActionsType>, ActionsType>
@@ -191,14 +202,14 @@ export const getPacksTC = (): ThunkType => {
 		const packsOnPage = state.search.packsPerPage
 		const myId = state.profile.myId
 
-		console.log(myId)
+		// console.log(myId)
 
 		// dispatch(setStatusAC('loading'))
+		dispatch(setDisabledAC(true))
 		searchPacksAPI.getPacksData(searchName, min, max, sortPacks, currentPage, packsOnPage, myId)
 			.then(response => {
-				console.log(response)
+				// console.log(response)
 				dispatch(setPacksAC(response.cardPacks))
-
 				dispatch(setTotalPacksCountAC(response.cardPacksTotalCount))
 				// dispatch(setMinMaxPriceRangeAC(response.minCardsCount, response.maxCardsCount))
 				// dispatch(setMinMaxCardsCountAC(response.minCardsCount, response.maxCardsCount))
@@ -215,6 +226,7 @@ export const getPacksTC = (): ThunkType => {
 			})
 			.finally(() => {
 				dispatch(setStatusAC('succeeded'))
+				dispatch(setDisabledAC(false))
 			})
 	}
 }
@@ -222,9 +234,10 @@ export const getPacksTC = (): ThunkType => {
 
 export const deletePackTC = (idPack: string | null): ThunkType => (dispatch) => {
 	// dispatch(setStatusAC('loading'))
+	dispatch(setDisabledAC(true))
 	searchPacksAPI.deletePack(idPack)
 		.then(response => {
-			console.log(response.data)
+			console.log(response)
 			dispatch(getPacksTC())
 		})
 		.catch((err) => {
@@ -236,11 +249,13 @@ export const deletePackTC = (idPack: string | null): ThunkType => (dispatch) => 
 		})
 		.finally(() => {
 			dispatch(setStatusAC('succeeded'))
+			dispatch(setDisabledAC(false))
 		})
 }
 
 export const addPackTC = (name: string): ThunkType => (dispatch, getState) => {
 	// dispatch(setStatusAC('loading'))
+	dispatch(setDisabledAC(true))
 
 	const newCard = {
 		// name: 'name',
@@ -255,7 +270,7 @@ export const addPackTC = (name: string): ThunkType => (dispatch, getState) => {
 	}
 	searchPacksAPI.addNewPack(newCard)
 		.then(response => {
-			console.log(response.data)
+			console.log(response)
 			dispatch(getPacksTC())
 		})
 		.catch((err) => {
@@ -267,18 +282,20 @@ export const addPackTC = (name: string): ThunkType => (dispatch, getState) => {
 		})
 		.finally(() => {
 			dispatch(setStatusAC('succeeded'))
+			dispatch(setDisabledAC(false))
 		})
 }
 
-export const updatePackTС = (packId: string): ThunkType => (dispatch, getState) => {
+export const updatePackTС = (packId: string, name: string): ThunkType => (dispatch, getState) => {
 	const newPack = {
 		_id: packId,
-		name: 'Pack was updated'
+		name: name
 	}
+	dispatch(setDisabledAC(true))
+
 	searchPacksAPI.updatePack(newPack)
 		.then(res => {
 			dispatch(getPacksTC())
-			console.log(res)
 		})
 		.catch(err => {
 			console.log(err)
@@ -289,5 +306,6 @@ export const updatePackTС = (packId: string): ThunkType => (dispatch, getState)
 		})
 		.finally(() => {
 			dispatch(setStatusAC('succeeded'))
+			dispatch(setDisabledAC(false))
 		})
 }

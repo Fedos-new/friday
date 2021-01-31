@@ -12,6 +12,8 @@ import SuperButton from '../common/SuperButton/SuperButton';
 import {AppRootState} from '../../bll/store';
 import {setMyIdAC} from '../../bll/profile-reducer';
 import {ModalBase} from '../common/ModalBase/ModalBase';
+import {NavLink, Route, useHistory, useParams} from 'react-router-dom';
+import {PATH} from '../Routes';
 
 type PacksType = {
 	cardPacks: Array<PackType>
@@ -31,6 +33,7 @@ type PacksType = {
 	headerElementPacks: Array<string>
 	addPack: (name: string) => void
 	isLoggedIn: boolean
+	disabled: boolean
 }
 
 export const Packs: FC<PacksType> = (
@@ -39,16 +42,20 @@ export const Packs: FC<PacksType> = (
 		page, totalPacksCount, packsPerPage, handlePageChange,
 		maxCardsCount, minCardsCount, minPrice, maxPrice, valueArray, onChangeRange,
 		renderPacksBody, headerElementPacks,
-		addPack, isLoggedIn
+		addPack, isLoggedIn,
+		disabled
 	}
 ) => {
 	const dispatch = useDispatch()
 	const myID = useSelector<AppRootState, string | null>(state => state.profile.profile._id)
-	let [mode, setMode] = useState<boolean>(false)
 	let [input, setInput] = useState<string>('')
+	let [isTouched, setTouched] = useState<boolean>(false)
+	const params = useParams<{ packId: string }>()
+	const history = useHistory()
 
 	useEffect(() => {
 		if (!isLoggedIn) return
+		setTouched(true)
 		dispatch(setMyIdAC(null))
 		dispatch(getPacksTC())
 	}, [dispatch])
@@ -64,18 +71,15 @@ export const Packs: FC<PacksType> = (
 	}
 
 	const closeModal = () => {
-		setMode(false)
+		history.push(PATH.PACKS)
 		setInput('')
 	}
-	const openModalHandler = () => setMode(true)
-	const onChangeText = (value: string) => {
-		setInput(value)
-	}
+	const onChangeText = (value: string) => setInput(value)
 
 	const onClickAddPackHandler = () => {
 		addPack(input)
-		setInput('')
 		closeModal()
+		setInput('')
 	}
 
 	if (status === 'loading') {
@@ -94,15 +98,19 @@ export const Packs: FC<PacksType> = (
 				<DoubleRangeSlider maxCardsCount={maxCardsCount} maxPrice={maxPrice}
 													 minCardsCount={minCardsCount} minPrice={minPrice}
 													 valueArray={valueArray} onChangeRange={onChangeRange}/>
-				<SuperButton onClick={getMyPacks} className={s.myPacks}>My packs</SuperButton>
-				<SuperButton onClick={getAllPacks} className={s.myPacks}>All packs</SuperButton>
-				<SuperButton onClick={openModalHandler} className={s.myPacks}>Add pack</SuperButton>
+				<SuperButton onClick={getMyPacks} className={s.myPacks} disabled={disabled}>My packs</SuperButton>
+				<SuperButton onClick={getAllPacks} className={s.myPacks} disabled={disabled}>All packs</SuperButton>
 
-				<ModalBase mode={mode} closeModal={closeModal} input={input} onChangeText={onChangeText}
-									 addTextHandler={onClickAddPackHandler} title='Please, enter the name of the pack'/>
+				<NavLink to={PATH.PACKS + '/add'}>
+					<SuperButton className={s.myPacks} disabled={isTouched && disabled}>Add pack</SuperButton></NavLink>
 
+				<Route path={PATH.PACKS + '/add'}
+							 render={() => <ModalBase closeModal={closeModal} input={input} onChangeText={onChangeText}
+																				addTextHandler={onClickAddPackHandler}
+																				title='Please, enter the name of the pack'/>}/>
 
-				<Table headerElement={headerElementPacks} renderPacksBody={renderPacksBody}/>
+				<Table headerElement={headerElementPacks} renderPacksBody={renderPacksBody}
+							 key={new Date().getDate().toLocaleString()}/>
 
 			</div>
 

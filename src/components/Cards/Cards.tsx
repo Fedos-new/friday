@@ -5,11 +5,13 @@ import {Table} from '../Table/Table';
 import s from '../Table/Table.module.css';
 import SuperButton from '../common/SuperButton/SuperButton';
 import {AppRootState} from '../../bll/store';
-import {Redirect} from 'react-router-dom';
+import {Redirect, useParams} from 'react-router-dom';
 import {PATH} from '../Routes';
 
 export const Cards = () => {
 	const dispatch = useDispatch()
+	const {id} = useParams<{ id: string }>();
+	console.log(id)
 	const cardsPackId = useSelector<AppRootState, string>(state => state.cards.cardsPackId)
 	const isLoggedIn = useSelector<AppRootState, boolean>(state => state.auth.isLoggedIn)
 
@@ -53,7 +55,7 @@ export const Cards = () => {
 	return (
 		<div className={s.cardTableBox}>
 			<SuperButton className={s.addBtn} onClick={addNewCardHandler}>Add Card</SuperButton>
-			<Table headerElement={headerElement} renderCardsBody={renderCardsBody} isTableCard={true}/>
+			<Table headerElement={headerElement} renderCardsBody={renderCardsBody} isTableCard={true} key={new Date().getMinutes().toLocaleString()}/>
 		</div>
 	)
 }

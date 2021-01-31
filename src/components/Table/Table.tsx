@@ -1,10 +1,11 @@
 import React, {FC, ReactNode} from 'react';
 import s from './Table.module.css'
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {AppRootState} from '../../bll/store';
 import {PackType} from '../../bll/searchPacks-reducer';
-import {addCardTC, CardType} from '../../bll/cards-reducer';
-import SuperButton from '../common/SuperButton/SuperButton';
+import {CardType} from '../../bll/cards-reducer';
+import {ModalConfirm} from '../common/ModalBase/ModalConfirm/ModalConfirm';
+import {ModalBase} from '../common/ModalBase/ModalBase';
 
 
 type TablePropsType = {
@@ -32,9 +33,9 @@ export const Table: FC<TablePropsType> = ({headerElement, renderPacksBody, rende
 		<div className={s.tableBox}>
 			{isTableCard && error && !cardsPackId &&
       <div className={s.errorBox}>{error && <div className={s.error}>{error}</div>}</div>}
-			<table className={s.table}>
+			<table className={s.table}  >
 				<thead>
-				<tr>{renderHeader(headerElement)}</tr>
+				  <tr>{renderHeader(headerElement)}</tr>
 				</thead>
 				<tbody>
 				{renderPacksBody ? renderPacksBody(cardPacks) : null}
@@ -44,3 +45,13 @@ export const Table: FC<TablePropsType> = ({headerElement, renderPacksBody, rende
 		</div>
 	)
 }
+
+{/*<ModalConfirm mode={mode} closeModal={closeModal} confirmHandler={() => {*/}
+{/*	confirmRemovePack(_id)*/}
+{/*}} cancelHandler={closeModal} title='Are you sure you want to delete this pack?'/>*/}
+
+{/*<ModalBase mode={updateMode} closeModal={closeUpdateModal} input={value}*/}
+{/*					 onChangeText={onChangeTextUpdateHandler}*/}
+{/*					 addTextHandler={() => {*/}
+{/*						 updatePack(_id, value)*/}
+{/*					 }} title='Please, update name of pack'/>*/}

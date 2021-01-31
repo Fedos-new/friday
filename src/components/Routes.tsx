@@ -35,7 +35,7 @@ export const Routes = () => {
                 <Route path={PATH.NEW_PASSWORD} render={() => <NewPasswordContainer/>}/>
                 <Route path={PATH.TEST} render={() => <Test/>}/>
                 <Route path={PATH.PACKS} render={() => <PacksContainer/>}/>
-                <Route path={PATH.CARDS} render={() => <Cards/>}/>
+                <Route path={PATH.CARDS + `/:id`} exact render={() => <Cards/>}/>
                 <Route render={() => <Error404/>}/>
             </Switch>
         </div>

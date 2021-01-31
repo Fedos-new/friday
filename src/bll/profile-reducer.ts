@@ -50,7 +50,6 @@ export const setMyIdAC = (myId: string | null) => ({type: SET_MY_ID, myId} as co
 export const setProfileTC = () => (dispatch: Dispatch<ActionsType>) => {
 	return profileAPI.getProfile()
 		.then(res => {
-        console.log(res.data._id)
 		    dispatch(setMyIdAC(res.data._id))
 				dispatch(setUserProfileAC(res.data))
 				dispatch(setIsLoggedInAC(true))
